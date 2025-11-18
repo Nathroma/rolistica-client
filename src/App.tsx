@@ -2,7 +2,7 @@ import useCharacter from '@/hooks/useCharacter';
 import StatsPageNew from '@/pages/statsPage/StatsPageNew';
 import React, { useState } from 'react';
 import './App.scss';
-import TabSelector from './components/tabSelector/TabSelector';
+import TabSelectorNew from './components/tabSelector/TabSelectorNew';
 import InventoryPage from './pages/inventoryPage/InventoryPage';
 import PlayerNotePage from './pages/playerNotePage/PlayerNotePage';
 import ProfilPage from './pages/profilPage/ProfilPage';
@@ -18,7 +18,7 @@ function App() {
       <div className="app-wrapper">
         <div className="App-content">
           <div className="tab-selector-wrapper">
-            <TabSelector
+            <TabSelectorNew
               selectedTab={selectedTab}
               setSelectedTab={setSelectedTab}
             />
