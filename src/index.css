@@ -10,15 +10,36 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color-scheme: light;
+
+  /* New Stats Page Colors */
+  --color-primary: #8b5cf6;
+  --color-background-light: #fdfbf7;
+  --color-background-dark: #1f1d2b;
+  --color-surface-light: #f7f3ee;
+  --color-surface-dark: #262837;
+  --color-border-light: #dcd7cf;
+  --color-border-dark: #393b4a;
+  --color-text-light: #3c3636;
+  --color-text-dark: #e0e0e0;
+  --color-text-muted-light: #7e7878;
+  --color-text-muted-dark: #9a9a9a;
+
+  /* Stat colors (new design) */
+  --color-str-new: #dc2626;
+  --color-dex-new: #f59e0b;
+  --color-con-new: #16a34a;
+  --color-int-new: #2563eb;
+  --color-wis-new: #9333ea;
+  --color-cha-new: #ec4899;
 }
 
 @font-face {
-  font-family: "nunito";
-  src: url("assets/fonts/nunito-sans.ttf");
+  font-family: 'nunito';
+  src: url('assets/fonts/nunito-sans.ttf');
 }
 
 * {
-  font-family: "nunito", sans-serif;
+  font-family: 'nunito', sans-serif;
 }
 
 a {
