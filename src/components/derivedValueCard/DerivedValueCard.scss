@@ -1,0 +1,43 @@
+.derived-value-card {
+  background-color: var(--color-surface);
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border);
+  text-align: center;
+
+  .derived-value-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .derived-value-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-text);
+  }
+
+  &.spell-save-dc {
+    grid-column: span 2;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .derived-value-card {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+
+    .derived-value-label {
+      color: var(--color-text-muted);
+    }
+
+    .derived-value-number {
+      color: var(--color-text);
+    }
+  }
+}
+

@@ -24,10 +24,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #fafafa;
+        background-color: var(--color-surface);
         text-align: center;
         border-radius: 5px;
-        border: 3px solid #020202;
+        border: 3px solid var(--color-border);
 
         img {
             width: 100%;
@@ -37,7 +37,7 @@
 
         span {
             font-size: 0.9rem;
-            color: #999;
+            color: var(--color-text-muted);
             padding: 0.5rem;
         }
     }
@@ -51,7 +51,7 @@
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            background-color: white;
+            background-color: var(--color-surface);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -75,7 +75,7 @@
 
         .character-sheet__xp {
             font-size: 0.8rem;
-            color: #666;
+            color: var(--color-text-muted);
         }
     }
 
@@ -88,7 +88,7 @@
             width: 130px;
             height: 130px;
             border-radius: 50%;
-            background-color: white;
+            background-color: var(--color-surface);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -101,12 +101,12 @@
 
             .character-sheet__classes-name {
                 font-size: 1.2rem;
-                color: #666;
+                color: var(--color-text-muted);
             }
 
             .character-sheet__classes-level {
                 font-size: 1.8rem;
-                color: #666;
+                color: var(--color-text-muted);
             }
         }
     }
@@ -116,12 +116,13 @@
         height: 4rem;
         align-items: center;
         justify-content: center;
-        border-top: #666 solid 2px;
+        border-top: var(--color-border) solid 2px;
         margin: 0 15px 0 15px;
 
         p {
             font-size: 2rem;
             font-weight: bold;
+            color: var(--color-text);
         }
     }
 
@@ -180,7 +181,7 @@
         .character-physical {
             display: grid;
             gap: 0.5rem;
-            border-left: #adadad solid 2px;
+            border-left: var(--color-border) solid 2px;
 
             .phsyical-wrapper {
                 display: flex;

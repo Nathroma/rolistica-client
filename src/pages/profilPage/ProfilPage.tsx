@@ -9,7 +9,7 @@ type ProfilPageProps = {
     character: Character;
 };
 
-const dataPhysicalImgPath = "/assets/icons/physicalDatasLogos/";
+const dataPhysicalImgPath = "/assets/icons/profilDatasLogos/physicalDatasLogos/";
 const dataProfilImgPath = "/assets/icons/profilDatasLogos/";
 
 const ProfilPage = ({ character }: ProfilPageProps) => {
@@ -21,7 +21,7 @@ const ProfilPage = ({ character }: ProfilPageProps) => {
                 <div className={cx('character-sheet__header')}>
                     {/* Photo du personnage */}
                     <div className={cx('character-sheet__photo')}>
-                        <img src={"photoUrl"} alt="Portrait du personnage" />
+                        <img src={dataProfilImgPath + "placeholder-character-profil-picture.png"} alt="Portrait du personnage" />
                     </div>
 
                     {/* Cercle Niveau / XP */}
@@ -30,8 +30,8 @@ const ProfilPage = ({ character }: ProfilPageProps) => {
                             <CircularProgressbar
                                 value={50}
                                 styles={buildStyles({
-                                    pathColor: "#4caf50",
-                                    trailColor: "#ddd",
+                                    pathColor: "var(--color-button-success)",
+                                    trailColor: "var(--color-border)",
                                     strokeLinecap: "round",
                                     pathTransitionDuration: 0.5,
                                 })}

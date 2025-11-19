@@ -1,0 +1,33 @@
+.skills-section {
+  grid-column: span 4;
+  background-color: var(--color-surface);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border);
+  flex-grow: 1;
+  overflow-y: auto;
+
+  .skills-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    color: var(--color-text);
+  }
+
+  .skills-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.25rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .skills-section {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+  }
+}
+

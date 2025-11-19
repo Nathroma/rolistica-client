@@ -5,9 +5,6 @@
 }
 
 .equipment-table-container {
-  @include complete-table(
-    $container-bg: map-get($table-colors, 'background'),
-    $add-button-bg: map-get($table-colors, 'button-success')
-  );
+  @include complete-table;
 }
   
