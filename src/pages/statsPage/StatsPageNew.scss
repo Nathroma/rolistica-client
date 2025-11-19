@@ -4,10 +4,9 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 1.5rem;
   overflow-y: auto;
-  background-color: var(--color-background-light);
-  color: var(--color-text-light);
+  background-color: var(--color-background);
+  color: var(--color-text);
   font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
 
@@ -20,13 +19,7 @@
       font-size: 1.875rem;
       font-weight: 700;
       margin: 0;
-      color: var(--color-text-light);
-    }
-
-    .stats-subtitle {
-      font-size: 0.875rem;
-      color: var(--color-text-muted-light);
-      margin: 0.25rem 0 0 0;
+      color: var(--color-text);
     }
   }
 
@@ -34,84 +27,12 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 1rem;
-    margin-bottom: 1rem;
     flex-shrink: 0;
-
-    .stat-card {
-      background-color: var(--color-surface-light);
-      padding: 0.75rem;
-      border-radius: 0.75rem;
-      border: 1px solid var(--color-border-light);
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      .stat-content {
-        .stat-name {
-          font-family: 'Cinzel', serif;
-          font-weight: 700;
-          font-size: 0.875rem;
-          margin: 0 0 0.5rem 0;
-        }
-
-        .stat-value-input {
-          font-size: 2.25rem;
-          font-weight: 700;
-          margin: 0;
-          color: var(--color-text-light);
-          background: transparent;
-          border: none;
-          text-align: center;
-          width: 100%;
-          padding: 0;
-
-          &:focus {
-            outline: none;
-          }
-        }
-
-        .stat-modifier {
-          font-size: 0.875rem;
-          font-weight: 700;
-          color: var(--color-text-muted-light);
-          margin: 0;
-        }
-      }
-
-      .stat-saving-throw {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        margin-top: 0.5rem;
-        padding-top: 0.5rem;
-        border-top: 1px solid var(--color-border-light);
-
-        .stat-checkbox {
-          height: 0.875rem;
-          width: 0.875rem;
-          border-radius: 0.125rem;
-          accent-color: var(--color-primary);
-          cursor: pointer;
-        }
-
-        .stat-saving-value {
-          font-size: 0.875rem;
-          font-weight: 700;
-          color: var(--color-text-muted-light);
-
-          &.is-mastered {
-            color: var(--color-primary);
-          }
-        }
-      }
-    }
   }
 
   .stats-divider {
     border: none;
-    border-top: 1px solid var(--color-border-light);
+    border-top: 1px solid var(--color-border);
     margin: 1rem 0;
   }
 
@@ -122,331 +43,11 @@
     flex: 1;
     min-height: 0;
 
-    .skills-section {
-      grid-column: span 3;
-      background-color: var(--color-surface-light);
-      padding: 1rem;
-      border-radius: 0.75rem;
-      border: 1px solid var(--color-border-light);
-      flex-grow: 1;
-      overflow-y: auto;
-
-      .skills-title {
-        font-family: 'Cinzel', serif;
-        font-size: 1.125rem;
-        font-weight: 700;
-        margin: 0 0 0.75rem 0;
-        color: var(--color-text-light);
-      }
-
-      .skills-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-        font-size: 0.875rem;
-
-        .skill-item {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0.25rem;
-          border-radius: 0.375rem;
-          transition: background-color 0.2s;
-
-          &:hover {
-            background-color: var(--color-background-light);
-          }
-
-          .skill-left {
-            display: flex;
-            align-items: center;
-
-            .skill-checkbox {
-              border-radius: 50%;
-              accent-color: var(--color-primary);
-              height: 0.75rem;
-              width: 0.75rem;
-              cursor: pointer;
-            }
-
-            .skill-name {
-              margin-left: 0.5rem;
-              color: var(--color-text-light);
-
-              .skill-attribute {
-                font-size: 0.75rem;
-                color: var(--color-text-muted-light);
-              }
-            }
-          }
-
-          .skill-modifier {
-            font-weight: 700;
-            font-size: 0.875rem;
-            background-color: var(--color-border-light);
-            padding: 0.125rem 0.5rem;
-            border-radius: 0.375rem;
-            color: var(--color-text-light);
-
-            &.is-proficient {
-              color: var(--color-primary);
-            }
-          }
-        }
-      }
-    }
-
-    .derived-values-section {
-      grid-column: span 5;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem;
-
-      .derived-values-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        width: 100%;
-        max-width: 24rem;
-
-        .derived-value-card {
-          background-color: var(--color-surface-light);
-          padding: 0.75rem;
-          border-radius: 0.75rem;
-          border: 1px solid var(--color-border-light);
-          text-align: center;
-
-          .derived-value-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--color-text-muted-light);
-            margin: 0 0 0.5rem 0;
-          }
-
-          .derived-value-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0;
-            color: var(--color-text-light);
-          }
-        }
-      }
-    }
-
     .hp-ac-section {
-      grid-column: span 4;
+      grid-column: span 3;
       display: flex;
       flex-direction: column;
       gap: 1rem;
-
-      .hp-card {
-        position: relative;
-        background-color: var(--color-surface-light);
-        padding: 1rem;
-        border-radius: 0.75rem;
-        border: 2px solid rgba(139, 92, 246, 0.5);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        flex: 1;
-        min-height: 0;
-
-        .hp-temp-badge {
-          position: absolute;
-          top: 0.5rem;
-          right: 0.5rem;
-          display: flex;
-          align-items: center;
-          background-color: rgba(59, 130, 246, 0.1);
-          border-radius: 9999px;
-          padding: 0.125rem 0.5rem;
-
-          .hp-temp-icon {
-            font-size: 0.875rem;
-            color: rgb(59, 130, 246);
-            margin-right: 0.25rem;
-          }
-
-          .hp-temp-text {
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: rgb(30, 64, 175);
-          }
-        }
-
-        .hp-label {
-          text-align: center;
-          font-size: 0.875rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          color: var(--color-text-muted-light);
-          margin: 0 0 0.25rem 0;
-        }
-
-        .hp-values {
-          display: flex;
-          align-items: baseline;
-          justify-content: center;
-          gap: 0.5rem;
-          margin: 0.25rem 0;
-
-          .hp-current-input,
-          .hp-max-input {
-            background: transparent;
-            border: none;
-            text-align: center;
-            font-weight: 700;
-            color: var(--color-text-light);
-            padding: 0;
-            width: auto;
-
-            &:focus {
-              outline: none;
-            }
-          }
-
-          .hp-current-input {
-            font-size: 3rem;
-            max-width: 5rem;
-          }
-
-          .hp-separator {
-            color: var(--color-text-muted-light);
-            font-size: 1.5rem;
-          }
-
-          .hp-max-input {
-            font-size: 1.5rem;
-            color: var(--color-text-muted-light);
-            max-width: 3rem;
-          }
-        }
-
-        .hp-bar-container {
-          width: 100%;
-          background-color: var(--color-border-light);
-          border-radius: 9999px;
-          height: 0.5rem;
-          margin-top: 0.5rem;
-          overflow: hidden;
-
-          .hp-bar {
-            width: 100%;
-            height: 100%;
-
-            .hp-bar-fill {
-              background-color: rgb(239, 68, 68);
-              height: 100%;
-              border-radius: 9999px;
-              transition: width 0.3s ease;
-            }
-          }
-        }
-
-        .hp-temp-input {
-          margin-top: 0.5rem;
-          width: 3rem;
-          text-align: center;
-          border: 1px solid var(--color-border-light);
-          border-radius: 0.25rem;
-          padding: 0.25rem;
-          background-color: transparent;
-          color: var(--color-text-light);
-        }
-      }
-
-      .ac-card {
-        background-color: var(--color-surface-light);
-        padding: 1rem;
-        border-radius: 0.75rem;
-        border: 2px solid rgba(139, 92, 246, 0.5);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        flex: 1;
-        min-height: 0;
-
-        .ac-content {
-          text-align: center;
-
-          .ac-label {
-            font-size: 0.875rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--color-text-muted-light);
-            margin: 0 0 0.25rem 0;
-          }
-
-          .ac-value-input {
-            font-size: 3rem;
-            font-weight: 700;
-            margin: 0.25rem 0 0 0;
-            color: var(--color-text-light);
-            background: transparent;
-            border: none;
-            text-align: center;
-            width: 100%;
-            padding: 0;
-
-            &:focus {
-              outline: none;
-            }
-          }
-        }
-
-        .ac-separator {
-          border-left: 1px solid var(--color-border-light);
-          height: 4rem;
-        }
-
-        .ac-shield-button {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          color: var(--color-text-muted-light);
-          background: none;
-          border: none;
-          padding: 0.5rem;
-          border-radius: 0.5rem;
-          cursor: pointer;
-          transition: all 0.2s;
-
-          &:hover {
-            color: var(--color-primary);
-            background-color: var(--color-border-light);
-          }
-
-          .shield-icon {
-            font-size: 2.25rem;
-            font-variation-settings: 'FILL' 0;
-
-            &.inactive {
-              font-variation-settings: 'FILL' 0;
-            }
-          }
-
-          .ac-shield-text {
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-top: 0.25rem;
-            opacity: 0.7;
-          }
-
-          &:hover .ac-shield-text {
-            opacity: 1;
-          }
-        }
-      }
     }
   }
 }
@@ -454,148 +55,21 @@
 // Dark mode support (if needed in the future)
 @media (prefers-color-scheme: dark) {
   .stats-page-new {
-    background-color: var(--color-background-dark);
-    color: var(--color-text-dark);
+    background-color: var(--color-background);
+    color: var(--color-text);
 
     .stats-header {
       .stats-title {
-        color: var(--color-text-dark);
+        color: var(--color-text);
       }
 
       .stats-subtitle {
-        color: var(--color-text-muted-dark);
-      }
-    }
-
-    .stats-grid {
-      .stat-card {
-        background-color: var(--color-surface-dark);
-        border-color: var(--color-border-dark);
-
-        .stat-content {
-          .stat-modifier {
-            color: var(--color-text-muted-dark);
-          }
-        }
-
-        .stat-saving-throw {
-          border-top-color: var(--color-border-dark);
-
-          .stat-saving-value {
-            color: var(--color-text-muted-dark);
-          }
-        }
+        color: var(--color-text-muted);
       }
     }
 
     .stats-divider {
-      border-top-color: var(--color-border-dark);
-    }
-
-    .stats-layout {
-      .skills-section {
-        background-color: var(--color-surface-dark);
-        border-color: var(--color-border-dark);
-
-        .skills-list {
-          .skill-item {
-            &:hover {
-              background-color: var(--color-background-dark);
-            }
-
-            .skill-left {
-              .skill-name {
-                color: var(--color-text-dark);
-
-                .skill-attribute {
-                  color: var(--color-text-muted-dark);
-                }
-              }
-            }
-
-            .skill-modifier {
-              background-color: var(--color-border-dark);
-              color: var(--color-text-dark);
-            }
-          }
-        }
-      }
-
-      .derived-values-section {
-        .derived-values-grid {
-          .derived-value-card {
-            background-color: var(--color-surface-dark);
-            border-color: var(--color-border-dark);
-
-            .derived-value-label {
-              color: var(--color-text-muted-dark);
-            }
-
-            .derived-value-number {
-              color: var(--color-text-dark);
-            }
-          }
-        }
-      }
-
-      .hp-ac-section {
-        .hp-card {
-          background-color: var(--color-surface-dark);
-          border-color: rgba(139, 92, 246, 0.7);
-
-          .hp-label {
-            color: var(--color-text-muted-dark);
-          }
-
-          .hp-values {
-            .hp-current {
-              color: var(--color-text-dark);
-            }
-
-            .hp-separator {
-              color: var(--color-text-muted-dark);
-            }
-
-            .hp-max {
-              color: var(--color-text-muted-dark);
-            }
-          }
-
-          .hp-bar-container {
-            background-color: var(--color-border-dark);
-          }
-
-          .hp-temp-input {
-            border-color: var(--color-border-dark);
-            color: var(--color-text-dark);
-          }
-        }
-
-        .ac-card {
-          background-color: var(--color-surface-dark);
-          border-color: rgba(139, 92, 246, 0.7);
-
-          .ac-label {
-            color: var(--color-text-muted-dark);
-          }
-
-          .ac-value-input {
-            color: var(--color-text-dark);
-          }
-
-          .ac-separator {
-            border-left-color: var(--color-border-dark);
-          }
-
-          .ac-shield-button {
-            color: var(--color-text-muted-dark);
-
-            &:hover {
-              background-color: var(--color-border-dark);
-            }
-          }
-        }
-      }
+      border-top-color: var(--color-border);
     }
   }
 }

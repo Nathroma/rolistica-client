@@ -30,8 +30,8 @@ const ProfilPage = ({ character }: ProfilPageProps) => {
                             <CircularProgressbar
                                 value={50}
                                 styles={buildStyles({
-                                    pathColor: "#4caf50",
-                                    trailColor: "#ddd",
+                                    pathColor: "var(--color-button-success)",
+                                    trailColor: "var(--color-border)",
                                     strokeLinecap: "round",
                                     pathTransitionDuration: 0.5,
                                 })}

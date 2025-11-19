@@ -1,28 +1,15 @@
-
-
 #root {
   text-align: center;
-  --color-for: #c12a32;
-  --color-dex: #f48e01;
-  --color-con: #2eb576;
-  --color-int: #00aded;
-  --color-sag: #902e8c;
-  --color-cha: #ef7eb0;
-
-  --color-background: hsl(0, 0%, 87%);
-
-  --color-proficiency-field: #b87333;
-  --color-inspiration-field: #008705;
-  --color-passive-perc-field: #dd07a4;
-  --color-initiative-field: #f49740;
-  --color-speed-field: #793b01;
-  --color-dd-save-field: #920077;
 }
 
 body {
-  background-color: #e4d9d9;
+  background-color: var(--color-background);
+  color: var(--color-text);
   font-family: 'Roboto', sans-serif;
   overflow: hidden;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .App {
@@ -35,37 +22,24 @@ body {
 .app-wrapper {
   display: flex;
   flex-direction: column;
-  flex: 1;
-
-  .App-header {
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    height: 10vh;
-    background-color: transparent;
-  }
 
   .App-content {
     display: flex;
     flex-direction: row;
-    margin-right: 3%;
-    overflow: auto;
-    height: 100%;
+    height: 100vh;
 
     .tab-selector-wrapper {
       display: flex;
       flex-direction: row;
       align-items: center;
-      height: 100%;
+      height: auto;
       width: auto;
-      margin-left: 1%;
+      margin-right: 1%;
     }
 
     .tab-component {
+      margin: 1.5rem;
       display: flex;
-      width: 100%;
-      height: 100%;
-      margin-left: 3%;
       justify-content: center;
     }
   }
@@ -74,7 +48,7 @@ body {
     display: flex;
     justify-content: left;
     align-items: end;
-    color: black;
+    color: var(--color-text);
     height: 10vh;
     background-color: transparent;
   }

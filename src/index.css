@@ -9,28 +9,84 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color-scheme: light;
 
-  /* New Stats Page Colors */
+  /* Primary colors */
   --color-primary: #8b5cf6;
-  --color-background-light: #fdfbf7;
-  --color-background-dark: #1f1d2b;
-  --color-surface-light: #f7f3ee;
-  --color-surface-dark: #262837;
-  --color-border-light: #dcd7cf;
-  --color-border-dark: #393b4a;
-  --color-text-light: #3c3636;
-  --color-text-dark: #e0e0e0;
-  --color-text-muted-light: #7e7878;
-  --color-text-muted-dark: #9a9a9a;
+  --color-primary-hover: #7c3aed;
 
-  /* Stat colors (new design) */
-  --color-str-new: #dc2626;
-  --color-dex-new: #f59e0b;
-  --color-con-new: #16a34a;
-  --color-int-new: #2563eb;
-  --color-wis-new: #9333ea;
-  --color-cha-new: #ec4899;
+  /* Light mode colors */
+  --color-background: #fdfbf7;
+  --color-surface: #f7f3ee;
+  --color-border: #dcd7cf;
+  --color-text: #3c3636;
+  --color-text-muted: #7e7878;
+  --color-text-inverse: #ffffff;
+
+  /* Stat colors (consistent across themes) */
+  --color-str: #dc2626;
+  --color-dex: #f59e0b;
+  --color-con: #16a34a;
+  --color-int: #2563eb;
+  --color-wis: #9333ea;
+  --color-cha: #ec4899;
+
+  /* Legacy stat colors (for old components) */
+  --color-for: #c12a32;
+  --color-sag: #902e8c;
+
+  /* Derived value colors */
+  --color-proficiency-field: #b87333;
+  --color-inspiration-field: #008705;
+  --color-passive-perc-field: #dd07a4;
+  --color-initiative-field: #f49740;
+  --color-speed-field: #793b01;
+  --color-dd-save-field: #920077;
+
+  /* Table colors */
+  --color-table-background: #cbbfbf;
+  --color-table-header-bg: #969696;
+  --color-table-row-odd: #e1e1e1;
+  --color-table-row-even: #c9c9c9;
+  --color-table-row-hover: #a9a9a9;
+  --color-button-primary: #2196f3;
+  --color-button-primary-hover: #0b7dda;
+  --color-button-danger: #f44336;
+  --color-button-danger-hover: #da190b;
+  --color-button-success: #4caf50;
+  --color-button-success-hover: #45a049;
+  --color-button-dark: #303030;
+  --color-button-dark-hover: #616161;
+
+  /* Floating button colors */
+  --color-floating-button-bg: #dfdfdf;
+  --color-floating-button-bg-hover: #929292;
+  --color-floating-button-text: #7a7773;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #1f1d2b;
+    --color-surface: #262837;
+    --color-border: #393b4a;
+    --color-text: #e0e0e0;
+    --color-text-muted: #9a9a9a;
+    --color-text-inverse: #3c3636;
+
+    /* Table colors for dark mode */
+    --color-table-background: #2a2a3a;
+    --color-table-header-bg: #3a3a4a;
+    --color-table-row-odd: #323242;
+    --color-table-row-even: #2a2a3a;
+    --color-table-row-hover: #3a3a4a;
+    --color-button-dark: #4a4a5a;
+    --color-button-dark-hover: #5a5a6a;
+
+    /* Floating button colors for dark mode */
+    --color-floating-button-bg: #3a3a4a;
+    --color-floating-button-bg-hover: #4a4a5a;
+    --color-floating-button-text: #b0b0b0;
+  }
 }
 
 @font-face {
@@ -67,15 +123,62 @@ button {
   transition: border-color 0.25s;
 }
 
+/* Light mode specific overrides */
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: var(--color-text);
+    background-color: var(--color-background);
   }
   a:hover {
-    color: #747bff;
+    color: var(--color-primary-hover);
   }
   button {
-    background-color: #f9f9f9;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+  }
+}
+
+/* Dark mode specific overrides */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
+}
+
+/* Disable number input spin boxes */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* SVG color adaptation for dark/light theme */
+/* Light mode: ensure SVGs are dark/visible on light background */
+@media (prefers-color-scheme: light) {
+  img[src$='.svg'],
+  img[src*='.svg'],
+  svg {
+    opacity: 1;
+  }
+}
+
+/* Dark mode: invert SVGs to make them light and visible */
+@media (prefers-color-scheme: dark) {
+  img[src$='.svg'],
+  img[src*='.svg'],
+  svg {
+    filter: invert(1) brightness(1.2);
+  }
+
+  /* Keep colored SVGs (like icons with specific colors) from being inverted */
+  img[src$='.svg'][class*='no-invert'],
+  svg[class*='no-invert'] {
+    filter: none;
   }
 }

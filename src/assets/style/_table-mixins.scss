@@ -31,14 +31,14 @@ $floating-button: (
   position: absolute;
   bottom: 20px;
   right: 20px;
-  width: map-get($floating-button, 'size');
-  height: map-get($floating-button, 'size');
-  border-radius: map-get($floating-button, 'border-radius');
-  background-color: map-get($floating-button, 'background');
-  color: map-get($floating-button, 'color');
-  font-size: map-get($floating-button, 'font-size');
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--color-floating-button-bg);
+  color: var(--color-floating-button-text);
+  font-size: 2rem;
   border: none;
-  box-shadow: map-get($floating-button, 'shadow');
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,13 +49,13 @@ $floating-button: (
   line-height: 1.5;
 
   &:hover {
-    background-color: map-get($floating-button, 'background-hover');
-    color: map-get($floating-button, 'background');
+    background-color: var(--color-floating-button-bg-hover);
+    color: var(--color-floating-button-text);
   }
 }
 
 // Mixin pour le conteneur de tableau
-@mixin table-container($background-color: map-get($table-colors, 'background')) {
+@mixin table-container($background-color: var(--color-table-background)) {
   position: relative;
   padding: 20px;
   font-family: Arial, sans-serif;
@@ -70,7 +70,7 @@ $floating-button: (
 }
 
 // Mixin pour le bouton d'ajout dans l'en-tête
-@mixin table-add-button($background-color: map-get($table-colors, 'button-success')) {
+@mixin table-add-button($background-color: var(--color-button-success)) {
   padding: 8px 16px;
   background-color: $background-color;
   border: none;
@@ -79,7 +79,7 @@ $floating-button: (
   cursor: pointer;
 
   &:hover {
-    background-color: map-get($table-colors, 'button-success-hover');
+    background-color: var(--color-button-success-hover);
   }
 }
 
@@ -99,20 +99,25 @@ $floating-button: (
   }
 
   th {
-    background-color: map-get($table-colors, 'header-bg');
+    background-color: var(--color-table-header-bg);
     height: 40px;
+    color: var(--color-text);
   }
 
   tr:nth-child(odd) {
-    background-color: map-get($table-colors, 'row-odd');
+    background-color: var(--color-table-row-odd);
   }
 
   tr:nth-child(even) {
-    background-color: map-get($table-colors, 'row-even');
+    background-color: var(--color-table-row-even);
   }
 
   tr:hover {
-    background-color: map-get($table-colors, 'row-hover');
+    background-color: var(--color-table-row-hover);
+  }
+
+  td {
+    color: var(--color-text);
   }
 }
 
@@ -126,27 +131,27 @@ $floating-button: (
     cursor: pointer;
 
     &:first-child {
-      background-color: map-get($table-colors, 'button-primary');
+      background-color: var(--color-button-primary);
       color: white;
 
       &:hover {
-        background-color: map-get($table-colors, 'button-primary-hover');
+        background-color: var(--color-button-primary-hover);
       }
     }
 
     &:last-child {
-      background-color: map-get($table-colors, 'button-danger');
+      background-color: var(--color-button-danger);
       color: white;
 
       &:hover {
-        background-color: map-get($table-colors, 'button-danger-hover');
+        background-color: var(--color-button-danger-hover);
       }
     }
   }
 }
 
 // Mixin complet pour un tableau avec tous les styles
-@mixin complete-table($container-bg: map-get($table-colors, 'background'), $add-button-bg: map-get($table-colors, 'button-success')) {
+@mixin complete-table($container-bg: var(--color-table-background), $add-button-bg: var(--color-button-success)) {
   @include table-container($container-bg);
 
   .table-header {
