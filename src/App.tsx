@@ -2,7 +2,7 @@ import useCharacter from '@/hooks/useCharacter';
 import StatsPageNew from '@/pages/statsPage/StatsPageNew';
 import React, { useState } from 'react';
 import './App.scss';
-import TabSelectorNew from './components/tabSelector/TabSelectorNew';
+import TabSelectorNew from './components/tabSelector/TabSelector';
 import InventoryPage from './pages/inventoryPage/InventoryPage';
 import PlayerNotePage from './pages/playerNotePage/PlayerNotePage';
 import ProfilPage from './pages/profilPage/ProfilPage';
