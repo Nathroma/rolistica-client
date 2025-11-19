@@ -1,0 +1,97 @@
+.saving-throws-section {
+  background-color: var(--color-surface);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border);
+  width: 100%;
+  max-width: 24rem;
+
+  .saving-throws-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    text-align: center;
+    color: var(--color-text);
+  }
+
+  .saving-throws-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .saving-throw-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: var(--color-background);
+    }
+
+    .saving-throw-content {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+
+      .saving-throw-checkbox {
+        height: 0.875rem;
+        width: 0.875rem;
+        border-radius: 0.125rem;
+        accent-color: var(--color-primary);
+        cursor: pointer;
+      }
+
+      .saving-throw-value {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: var(--color-text-muted);
+
+        &.is-mastered {
+          color: var(--color-primary);
+        }
+      }
+    }
+
+    .saving-throw-label {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      margin-top: 0.25rem;
+    }
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .saving-throws-section {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+
+    .saving-throws-title {
+      color: var(--color-text);
+    }
+
+    .saving-throw-item {
+      &:hover {
+        background-color: var(--color-background);
+      }
+
+      .saving-throw-content {
+        .saving-throw-value {
+          color: var(--color-text-muted);
+        }
+      }
+
+      .saving-throw-label {
+        color: var(--color-text-muted);
+      }
+    }
+  }
+}
+

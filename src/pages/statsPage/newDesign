@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Fiche de Personnage - Statistiques</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&amp;family=Lato:wght@400;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#8B5CF6', // Purple accent
+              'background-light': '#FDFBF7', // Parchment
+              'background-dark': '#1F1D2B', // Dark stone
+              'surface-light': '#F7F3EE',
+              'surface-dark': '#262837',
+              'border-light': '#DCD7CF',
+              'border-dark': '#393B4A',
+              'text-light': '#3C3636',
+              'text-dark': '#E0E0E0',
+              'text-muted-light': '#7E7878',
+              'text-muted-dark': '#9A9A9A',
+              // Stat colors
+              str: '#DC2626', // Red
+              dex: '#F59E0B', // Amber
+              con: '#16A34A', // Green
+              int: '#2563EB', // Blue
+              wis: '#9333EA', // Purple
+              cha: '#EC4899', // Pink
+            },
+            fontFamily: {
+              display: ['Cinzel', 'serif'],
+              body: ['Lato', 'sans-serif'],
+            },
+            borderRadius: {
+              DEFAULT: '0.75rem',
+              lg: '1rem',
+              xl: '1.25rem',
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: 'Lato', sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      .font-display {
+        font-family: 'Cinzel', serif;
+      }
+      .shield-icon {
+        font-variation-settings: 'FILL' 1;
+      }
+      .shield-icon.inactive {
+        font-variation-settings: 'FILL' 0;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark antialiased"
+  >
+    <div class="flex h-screen overflow-hidden">
+      <aside
+        class="flex flex-col items-center w-24 bg-surface-light dark:bg-surface-dark p-4 shadow-lg flex-shrink-0"
+      >
+        <h1 class="font-display text-2xl mb-12 text-primary">D&amp;D</h1>
+        <nav class="flex flex-col space-y-4">
+          <a
+            class="flex flex-col items-center p-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-border-light dark:hover:bg-border-dark transition-colors"
+            href="#"
+          >
+            <span class="material-icons">person</span>
+            <span class="text-xs mt-1">Profil</span>
+          </a>
+          <a
+            class="flex flex-col items-center p-3 rounded-lg bg-border-light dark:bg-border-dark text-primary dark:text-white"
+            href="#"
+          >
+            <span class="material-icons">bar_chart</span>
+            <span class="text-xs mt-1 font-bold">Stats</span>
+          </a>
+          <a
+            class="flex flex-col items-center p-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-border-light dark:hover:bg-border-dark transition-colors"
+            href="#"
+          >
+            <span class="material-icons">inventory_2</span>
+            <span class="text-xs mt-1">Inventaire</span>
+          </a>
+          <a
+            class="flex flex-col items-center p-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-border-light dark:hover:bg-border-dark transition-colors"
+            href="#"
+          >
+            <span class="material-icons">auto_stories</span>
+            <span class="text-xs mt-1">Grimoire</span>
+          </a>
+          <a
+            class="flex flex-col items-center p-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-border-light dark:hover:bg-border-dark transition-colors"
+            href="#"
+          >
+            <span class="material-icons">note_alt</span>
+            <span class="text-xs mt-1">Note</span>
+          </a>
+        </nav>
+      </aside>
+      <main class="flex-1 p-6 overflow-y-hidden flex flex-col">
+        <header class="mb-4 flex-shrink-0">
+          <h2 class="text-3xl font-display font-bold">Statistiques</h2>
+        </header>
+        <div class="grid grid-cols-6 gap-4 mb-4 flex-shrink-0">
+          <div
+            class="bg-surface-light dark:bg-surface-dark p-3 rounded-lg border border-border-light dark:border-border-dark text-center"
+          >
+            <p class="font-display font-bold text-str">Force</p>
+            <p class="text-4xl font-bold">10</p>
+            <p
+              class="text-sm font-bold text-text-muted-light dark:text-text-muted-dark"
+            >
+              0
+            </p>
+          </div>
+          <div
+            class="bg-surface-light dark:bg-surface-dark p-3 rounded-lg border border-border-light dark:border-border-dark text-center"
+          >
+            <p class="font-display font-bold text-dex">Dextérité</p>
+            <p class="text-4xl font-bold">14</p>
+            <p
+              class="text-sm font-bold text-text-muted-light dark:text-text-muted-dark"
+            >
+              +2
+            </p>
+          </div>
+          <div
+            class="bg-surface-light dark:bg-surface-dark p-3 rounded-lg border border-border-light dark:border-border-dark text-center"
+          >
+            <p class="font-display font-bold text-con">Constitution</p>
+            <p class="text-4xl font-bold">12</p>
+            <p
+              class="text-sm font-bold text-text-muted-light dark:text-text-muted-dark"
+            >
+              +1
+            </p>
+          </div>
+          <div
+            class="bg-surface-light dark:bg-surface-dark p-3 rounded-lg border border-border-light dark:border-border-dark text-center"
+          >
+            <p class="font-display font-bold text-int">Intelligence</p>
+            <p class="text-4xl font-bold">8</p>
+            <p
+              class="text-sm font-bold text-text-muted-light dark:text-text-muted-dark"
+            >
+              -1
+            </p>
+          </div>
+          <div
+            class="bg-surface-light dark:bg-surface-dark p-3 rounded-lg border border-border-light dark:border-border-dark text-center"
+          >
+            <p class="font-display font-bold text-wis">Sagesse</p>
+            <p class="text-4xl font-bold">16</p>
+            <p
+              class="text-sm font-bold text-text-muted-light dark:text-text-muted-dark"
+            >
+              +3
+            </p>
+          </div>
+          <div
+            class="bg-surface-light dark:bg-surface-dark p-3 rounded-lg border border-border-light dark:border-border-dark text-center"
+          >
+            <p class="font-display font-bold text-cha">Charisme</p>
+            <p class="text-4xl font-bold">15</p>
+            <p
+              class="text-sm font-bold text-text-muted-light dark:text-text-muted-dark"
+            >
+              +2
+            </p>
+          </div>
+        </div>
+        <hr class="border-border-light dark:border-border-dark mb-4" />
+        <div class="grid grid-cols-12 gap-6 flex-1 min-h-0">
+          <div
+            class="col-span-4 bg-surface-light dark:bg-surface-dark p-4 rounded-lg border border-border-light dark:border-border-dark flex-grow overflow-y-auto"
+          >
+            <h3 class="font-display text-lg font-bold mb-3">Compétences</h3>
+            <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
+              <div
+                class="flex items-center justify-between p-1 rounded-md hover:bg-background-light dark:hover:bg-background-dark"
+              >
+                <div class="flex items-center">
+                  <input
+                    class="form-checkbox rounded-full text-primary focus:ring-primary h-3 w-3"
+                    type="checkbox"
+                  /><span class="ml-2"
+                    >Acrobaties
+                    <span
+                      class="text-xs text-text-muted-light dark:text-text-muted-dark"
+                      >(DEX)</span
+                    ></span
+                  >
+                </div>
+                <span
+                  class="font-bold text-sm bg-border-light dark:bg-border-dark px-2 py-0.5 rounded-md"
+                  >+2</span
+                >
+              </div>
+              <div
+                class="flex items-center justify-between p-1 rounded-md hover:bg-background-light dark:hover:bg-background-dark"
+              >
+                <div class="flex items-center">
+                  <input
+                    class="form-checkbox rounded-full text-primary focus:ring-primary h-3 w-3"
+                    type="checkbox"
+                  /><span class="ml-2"
+                    >Arcanes
+                    <span
+                      class="text-xs text-text-muted-light dark:text-text-muted-dark"
+                      >(INT)</span
+                    ></span
+                  >
+                </div>
+                <span
+                  class="font-bold text-sm bg-border-light dark:bg-border-dark px-2 py-0.5 rounded-md"
+                  >-1</span
+                >
+              </div>
+              <div
+                class="flex items-center justify-between p-1 rounded-md hover:bg-background-light dark:hover:bg-background-dark"
+              >
+                <div class="flex items-center">
+                  <input
+                    checked=""
+                    class="form-checkbox rounded-full text-primary focus:ring-primary h-3 w-3"
+                    type="checkbox"
+                  /><span class="ml-2"
+                    >Athlétisme
+                    <span
+                      class="text-xs text-text-muted-light dark:text-text-muted-dark"
+                      >(FOR)</span
+                    ></span
+                  >
+                </div>
+                <span
+                  class="font-bold text-sm bg-border-light dark:bg-border-dark px-2 py-0.5 rounded-md text-primary"
+                  >+3</span
+                >
+              </div>
+              <div
+                class="flex items-center justify-between p-1 rounded-md hover:bg-background-light dark:hover:bg-background-dark"
+              >
+                <div class="flex items-center">
+                  <input
+                    class="form-checkbox rounded-full text-primary focus:ring-primary h-3 w-3"
+                    type="checkbox"
+                  /><span class="ml-2"
+                    >Discrétion
+                    <span
+                      class="text-xs text-text-muted-light dark:text-text-muted-dark"
+                      >(DEX)</span
+                    ></span
+                  >
+                </div>
+                <span
+                  class="font-bold text-sm bg-border-light dark:bg-border-dark px-2 py-0.5 rounded-md"
+                  >+2</span
+                >
+              </div>
+              <div
+                class="flex items-center justify-between p-1 rounded-md hover:bg-background-light dark:hover:bg-background-dark"
+              >
+                <div class="flex items-center">
+                  <input
+                    checked=""
+                    class="form-checkbox rounded-full text-primary focus:ring-primary h-3 w-3"
+                    type="checkbox"
+                  /><span class="ml-2"
+                    >Intimidation
+                    <span
+                      class="text-xs text-text-muted-light dark:text-text-muted-dark"
+                      >(CHA)</span
+                    ></span
+                  >
+                </div>
+                <span
+                  class="font-bold text-sm bg-border-light dark:bg-border-dark px-2 py-0.5 rounded-md text-primary"
+                  >+5</span
+                >
+              </div>
+              <div
+                class="flex items-center justify-between p-1 rounded-md hover:bg-background-light dark:hover:bg-background-dark"
+              >
+                <div class="flex items-center">
+                  <input
+                    checked=""
+                    class="form-checkbox rounded-full text-primary focus:ring-primary h-3 w-3"
+                    type="checkbox"
+                  /><span class="ml-2"
+                    >Médecine
+                    <span
+                      class="text-xs text-text-muted-light dark:text-text-muted-dark"
+                      >(SAG)</span
+                    ></span
+                  >
+                </div>
+                <span
+                  class="font-bold text-sm bg-border-light dark:bg-border-dark px-2 py-0.5 rounded-md text-primary"
+                  >+6</span
+                >
+              </div>
+              <div
+                class="flex items-center justify-between p-1 rounded-md hover:bg-background-light dark:hover:bg-background-dark"
+              >
+                <div class="flex items-center">
+                  <input
+                    checked=""
+                    class="form-checkbox rounded-full text-primary focus:ring-primary h-3 w-3"
+                    type="checkbox"
+                  /><span class="ml-2"
+                    >Perception
+                    <span
+                      class="text-xs text-text-muted-light dark:text-text-muted-dark"
+                      >(SAG)</span
+                    ></span
+                  >
+                </div>
+                <span
+                  class="font-bold text-sm bg-border-light dark:bg-border-dark px-2 py-0.5 rounded-md text-primary"
+                  >+6</span
+                >
+              </div>
+              <div
+                class="flex items-center justify-between p-1 rounded-md hover:bg-background-light dark:hover:bg-background-dark"
+              >
+                <div class="flex items-center">
+                  <input
+                    class="form-checkbox rounded-full text-primary focus:ring-primary h-3 w-3"
+                    type="checkbox"
+                  /><span class="ml-2"
+                    >Persuasion
+                    <span
+                      class="text-xs text-text-muted-light dark:text-text-muted-dark"
+                      >(CHA)</span
+                    ></span
+                  >
+                </div>
+                <span
+                  class="font-bold text-sm bg-border-light dark:bg-border-dark px-2 py-0.5 rounded-md"
+                  >+2</span
+                >
+              </div>
+              <div
+                class="flex items-center justify-between p-1 rounded-md hover:bg-background-light dark:hover:bg-background-dark"
+              >
+                <div class="flex items-center">
+                  <input
+                    class="form-checkbox rounded-full text-primary focus:ring-primary h-3 w-3"
+                    type="checkbox"
+                  /><span class="ml-2"
+                    >Escamotage
+                    <span
+                      class="text-xs text-text-muted-light dark:text-text-muted-dark"
+                      >(DEX)</span
+                    ></span
+                  >
+                </div>
+                <span
+                  class="font-bold text-sm bg-border-light dark:bg-border-dark px-2 py-0.5 rounded-md"
+                  >+2</span
+                >
+              </div>
+              <div
+                class="flex items-center justify-between p-1 rounded-md hover:bg-background-light dark:hover:bg-background-dark"
+              >
+                <div class="flex items-center">
+                  <input
+                    class="form-checkbox rounded-full text-primary focus:ring-primary h-3 w-3"
+                    type="checkbox"
+                  /><span class="ml-2"
+                    >Investigation
+                    <span
+                      class="text-xs text-text-muted-light dark:text-text-muted-dark"
+                      >(INT)</span
+                    ></span
+                  >
+                </div>
+                <span
+                  class="font-bold text-sm bg-border-light dark:bg-border-dark px-2 py-0.5 rounded-md"
+                  >-1</span
+                >
+              </div>
+              <div
+                class="flex items-center justify-between p-1 rounded-md hover:bg-background-light dark:hover:bg-background-dark"
+              >
+                <div class="flex items-center">
+                  <input
+                    class="form-checkbox rounded-full text-primary focus:ring-primary h-3 w-3"
+                    type="checkbox"
+                  /><span class="ml-2"
+                    >Représentation
+                    <span
+                      class="text-xs text-text-muted-light dark:text-text-muted-dark"
+                      >(CHA)</span
+                    ></span
+                  >
+                </div>
+                <span
+                  class="font-bold text-sm bg-border-light dark:bg-border-dark px-2 py-0.5 rounded-md"
+                  >+2</span
+                >
+              </div>
+              <div
+                class="flex items-center justify-between p-1 rounded-md hover:bg-background-light dark:hover:bg-background-dark"
+              >
+                <div class="flex items-center">
+                  <input
+                    class="form-checkbox rounded-full text-primary focus:ring-primary h-3 w-3"
+                    type="checkbox"
+                  /><span class="ml-2"
+                    >Survie
+                    <span
+                      class="text-xs text-text-muted-light dark:text-text-muted-dark"
+                      >(SAG)</span
+                    ></span
+                  >
+                </div>
+                <span
+                  class="font-bold text-sm bg-border-light dark:bg-border-dark px-2 py-0.5 rounded-md"
+                  >+3</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-span-5 flex flex-col justify-between items-center p-4"
+          >
+            <div
+              class="flex items-center justify-center p-3 rounded-lg border border-primary/50 dark:border-primary/70 bg-surface-light dark:bg-surface-dark shadow-lg w-40"
+            >
+              <p class="text-sm font-bold uppercase mr-4">Maîtrise</p>
+              <p class="text-3xl font-bold text-primary">+3</p>
+            </div>
+            <div
+              class="bg-surface-light dark:bg-surface-dark p-4 rounded-lg border border-border-light dark:border-border-dark w-full max-w-lg"
+            >
+              <h3 class="font-display text-lg font-bold mb-3 text-center">
+                Jets de Sauvegarde
+              </h3>
+              <div class="grid grid-cols-3 gap-4 text-center">
+                <div
+                  class="flex flex-col items-center p-2 rounded-lg hover:bg-background-light dark:hover:bg-background-dark"
+                >
+                  <div class="flex items-center space-x-2">
+                    <input
+                      class="form-checkbox h-3.5 w-3.5 rounded-sm text-primary focus:ring-primary focus:ring-offset-0"
+                      type="checkbox"
+                    /><span class="font-bold text-sm">0</span>
+                  </div>
+                  <span
+                    class="text-xs text-text-muted-light dark:text-text-muted-dark mt-1"
+                    >Force</span
+                  >
+                </div>
+                <div
+                  class="flex flex-col items-center p-2 rounded-lg hover:bg-background-light dark:hover:bg-background-dark"
+                >
+                  <div class="flex items-center space-x-2">
+                    <input
+                      checked=""
+                      class="form-checkbox h-3.5 w-3.5 rounded-sm text-primary focus:ring-primary focus:ring-offset-0"
+                      type="checkbox"
+                    /><span class="font-bold text-sm text-primary">+5</span>
+                  </div>
+                  <span
+                    class="text-xs text-text-muted-light dark:text-text-muted-dark mt-1"
+                    >Dextérité</span
+                  >
+                </div>
+                <div
+                  class="flex flex-col items-center p-2 rounded-lg hover:bg-background-light dark:hover:bg-background-dark"
+                >
+                  <div class="flex items-center space-x-2">
+                    <input
+                      class="form-checkbox h-3.5 w-3.5 rounded-sm text-primary focus:ring-primary focus:ring-offset-0"
+                      type="checkbox"
+                    /><span class="font-bold text-sm">+1</span>
+                  </div>
+                  <span
+                    class="text-xs text-text-muted-light dark:text-text-muted-dark mt-1"
+                    >Constitution</span
+                  >
+                </div>
+                <div
+                  class="flex flex-col items-center p-2 rounded-lg hover:bg-background-light dark:hover:bg-background-dark"
+                >
+                  <div class="flex items-center space-x-2">
+                    <input
+                      class="form-checkbox h-3.5 w-3.5 rounded-sm text-primary focus:ring-primary focus:ring-offset-0"
+                      type="checkbox"
+                    /><span class="font-bold text-sm">-1</span>
+                  </div>
+                  <span
+                    class="text-xs text-text-muted-light dark:text-text-muted-dark mt-1"
+                    >Intelligence</span
+                  >
+                </div>
+                <div
+                  class="flex flex-col items-center p-2 rounded-lg hover:bg-background-light dark:hover:bg-background-dark"
+                >
+                  <div class="flex items-center space-x-2">
+                    <input
+                      checked=""
+                      class="form-checkbox h-3.5 w-3.5 rounded-sm text-primary focus:ring-primary focus:ring-offset-0"
+                      type="checkbox"
+                    /><span class="font-bold text-sm text-primary">+6</span>
+                  </div>
+                  <span
+                    class="text-xs text-text-muted-light dark:text-text-muted-dark mt-1"
+                    >Sagesse</span
+                  >
+                </div>
+                <div
+                  class="flex flex-col items-center p-2 rounded-lg hover:bg-background-light dark:hover:bg-background-dark"
+                >
+                  <div class="flex items-center space-x-2">
+                    <input
+                      class="form-checkbox h-3.5 w-3.5 rounded-sm text-primary focus:ring-primary focus:ring-offset-0"
+                      type="checkbox"
+                    /><span class="font-bold text-sm">+2</span>
+                  </div>
+                  <span
+                    class="text-xs text-text-muted-light dark:text-text-muted-dark mt-1"
+                    >Charisme</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-3 gap-4 w-full max-w-lg">
+              <div
+                class="bg-surface-light dark:bg-surface-dark p-3 rounded-lg border border-border-light dark:border-border-dark text-center"
+              >
+                <p
+                  class="text-xs text-text-muted-light dark:text-text-muted-dark font-bold uppercase"
+                >
+                  Initiative
+                </p>
+                <p class="text-2xl font-bold">+2</p>
+              </div>
+              <div
+                class="bg-surface-light dark:bg-surface-dark p-3 rounded-lg border border-border-light dark:border-border-dark text-center"
+              >
+                <p
+                  class="text-xs text-text-muted-light dark:text-text-muted-dark font-bold uppercase"
+                >
+                  Vitesse
+                </p>
+                <p class="text-2xl font-bold">9m</p>
+              </div>
+              <div
+                class="bg-surface-light dark:bg-surface-dark p-3 rounded-lg border border-border-light dark:border-border-dark text-center"
+              >
+                <p
+                  class="text-xs text-text-muted-light dark:text-text-muted-dark font-bold uppercase"
+                >
+                  Inspiration
+                </p>
+                <p class="text-2xl font-bold">0</p>
+              </div>
+              <div
+                class="bg-surface-light dark:bg-surface-dark p-3 rounded-lg border border-border-light dark:border-border-dark text-center"
+              >
+                <p
+                  class="text-xs text-text-muted-light dark:text-text-muted-dark font-bold uppercase"
+                >
+                  Perception
+                </p>
+                <p class="text-2xl font-bold">16</p>
+              </div>
+              <div
+                class="bg-surface-light dark:bg-surface-dark p-3 rounded-lg border border-border-light dark:border-border-dark text-center col-span-2"
+              >
+                <p
+                  class="text-xs text-text-muted-light dark:text-text-muted-dark font-bold uppercase"
+                >
+                  DD de Sort
+                </p>
+                <p class="text-2xl font-bold">14</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-3 flex flex-col space-y-4">
+            <div
+              class="relative bg-surface-light dark:bg-surface-dark p-4 rounded-lg border border-border-light dark:border-border-dark shadow-md flex flex-col items-center justify-center flex-1"
+            >
+              <div
+                class="absolute top-2 right-2 flex items-center bg-blue-100 dark:bg-blue-900/50 rounded-full px-2 py-0.5"
+              >
+                <span class="material-icons text-sm text-blue-500 mr-1"
+                  >healing</span
+                >
+                <span class="text-xs font-bold text-blue-800 dark:text-blue-300"
+                  >Temp: 5</span
+                >
+              </div>
+              <p
+                class="text-center text-sm text-text-muted-light dark:text-text-muted-dark font-bold uppercase tracking-wider"
+              >
+                Points de Vie
+              </p>
+              <div class="flex items-baseline justify-center space-x-2 mt-1">
+                <p class="text-4xl font-bold">25</p>
+                <span
+                  class="text-text-muted-light dark:text-text-muted-dark text-xl"
+                  >/</span
+                >
+                <p
+                  class="text-xl font-bold text-text-muted-light dark:text-text-muted-dark"
+                >
+                  25
+                </p>
+              </div>
+              <div
+                class="w-full bg-border-light dark:bg-border-dark rounded-full h-1.5 mt-2"
+              >
+                <div
+                  class="bg-red-500 h-1.5 rounded-full"
+                  style="width: 100%"
+                ></div>
+              </div>
+            </div>
+            <div
+              class="bg-surface-light dark:bg-surface-dark p-4 rounded-lg border border-border-light dark:border-border-dark shadow-md flex items-center justify-center space-x-4 flex-1"
+            >
+              <div class="text-center">
+                <p
+                  class="text-sm text-text-muted-light dark:text-text-muted-dark font-bold uppercase tracking-wider"
+                >
+                  Classe d'Armure
+                </p>
+                <p class="text-4xl font-bold">14</p>
+              </div>
+              <div
+                class="border-l border-border-light dark:border-border-dark h-12"
+              ></div>
+              <button
+                class="flex flex-col items-center justify-center text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary transition-colors p-2 rounded-lg hover:bg-border-light dark:hover:bg-border-dark group"
+              >
+                <span class="material-icons shield-icon inactive text-3xl"
+                  >shield</span
+                ><span
+                  class="text-xs font-bold mt-1 opacity-70 group-hover:opacity-100"
+                  >+2 Bouclier</span
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

@@ -12,7 +12,7 @@
     @include table-header;
 
     .add-button {
-      @include table-add-button(map-get($table-colors, 'button-success'));
+      @include table-add-button;
     }
   }
 

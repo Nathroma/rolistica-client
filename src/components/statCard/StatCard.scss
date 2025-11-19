@@ -1,0 +1,52 @@
+.stat-card {
+  background-color: var(--color-surface);
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .stat-name {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 0.875rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .stat-value-input {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-text);
+    background: transparent;
+    border: none;
+    text-align: center;
+    width: 100%;
+    padding: 0;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .stat-modifier {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .stat-card {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+
+    .stat-modifier {
+      color: var(--color-text-muted);
+    }
+  }
+}

@@ -1,0 +1,116 @@
+.ac-card {
+  background-color: var(--color-surface);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 2px solid rgba(139, 92, 246, 0.5);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex: 1;
+  min-height: 0;
+
+  .ac-content {
+    text-align: center;
+
+    .ac-label {
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+      margin: 0 0 0.25rem 0;
+    }
+
+    .ac-value-input {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0.25rem 0 0 0;
+      color: var(--color-text);
+      background: transparent;
+      border: none;
+      text-align: center;
+      width: 100%;
+      padding: 0;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .ac-separator {
+    border-left: 1px solid var(--color-border);
+    height: 4rem;
+  }
+
+  .ac-shield-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      color: var(--color-primary);
+      background-color: var(--color-border);
+    }
+
+    .shield-icon {
+      font-size: 2.25rem;
+      font-variation-settings: 'FILL' 0;
+
+      &.inactive {
+        font-variation-settings: 'FILL' 0;
+      }
+    }
+
+    .ac-shield-text {
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-top: 0.25rem;
+      opacity: 0.7;
+    }
+
+    &:hover .ac-shield-text {
+      opacity: 1;
+    }
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .ac-card {
+    background-color: var(--color-surface);
+    border-color: rgba(139, 92, 246, 0.7);
+
+    .ac-content {
+      .ac-label {
+        color: var(--color-text-muted);
+      }
+
+      .ac-value-input {
+        color: var(--color-text);
+      }
+    }
+
+    .ac-separator {
+      border-left-color: var(--color-border);
+    }
+
+    .ac-shield-button {
+      color: var(--color-text-muted);
+
+      &:hover {
+        background-color: var(--color-border);
+      }
+    }
+  }
+}
