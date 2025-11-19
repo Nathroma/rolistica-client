@@ -13,8 +13,6 @@ body {
 }
 
 .App {
-  display: flex;
-  flex-direction: row;
   height: 100vh;
   width: 100vw;
 }
@@ -22,25 +20,20 @@ body {
 .app-wrapper {
   display: flex;
   flex-direction: column;
+  margin-left: 8rem; // Compense la sidebar fixe
+  width: calc(100% - 8rem);
+  height: 100vh;
 
   .App-content {
     display: flex;
     flex-direction: row;
-    height: 100vh;
-
-    .tab-selector-wrapper {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      height: auto;
-      width: auto;
-      margin-right: 1%;
-    }
+    flex: 1;
 
     .tab-component {
       margin: 1.5rem;
       display: flex;
       justify-content: center;
+      width: 100%;
     }
   }
 

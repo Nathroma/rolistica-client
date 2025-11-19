@@ -15,14 +15,12 @@ function App() {
 
   return (
     <div className="App">
+      <TabSelectorNew
+        selectedTab={selectedTab}
+        setSelectedTab={setSelectedTab}
+      />
       <div className="app-wrapper">
         <div className="App-content">
-          <div className="tab-selector-wrapper">
-            <TabSelectorNew
-              selectedTab={selectedTab}
-              setSelectedTab={setSelectedTab}
-            />
-          </div>
           <div className="tab-component">
             {
               {

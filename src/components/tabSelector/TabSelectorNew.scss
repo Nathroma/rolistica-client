@@ -1,13 +1,18 @@
 .sidebar-new {
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 6rem;
+  height: 100vh;
   background-color: var(--color-surface);
   padding: 1rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  flex-shrink: 0;
-  height: 100%;
+  z-index: 1000;
+  overflow-y: auto;
+  overflow-x: hidden;
   font-family: 'Lato', sans-serif;
 
   .sidebar-title {
