@@ -1,0 +1,881 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MongoDB Schema for D&D Character Sheet",
+  "description": "Schéma complet pour MongoDB avec Mongoose - Personnage de JDR D&D",
+
+  "collections": {
+    "characters": {
+      "description": "Collection principale des personnages",
+      "schema": {
+        "_id": {
+          "type": "ObjectId",
+          "description": "Identifiant unique MongoDB"
+        },
+        "userId": {
+          "type": "ObjectId",
+          "required": true,
+          "description": "Référence vers l'utilisateur propriétaire",
+          "ref": "User"
+        },
+        "profile": {
+          "name": {
+            "type": "String",
+            "default": null,
+            "description": "Nom du personnage"
+          },
+          "race": {
+            "type": "String",
+            "default": null,
+            "description": "Race du personnage"
+          },
+          "class": {
+            "type": "String",
+            "enum": [
+              "barbarian",
+              "bard",
+              "clerc",
+              "druid",
+              "wizard",
+              "warrior",
+              "magician",
+              "monk",
+              "paladin",
+              "ranger",
+              "rogue",
+              "warlock"
+            ],
+            "default": null,
+            "description": "Classe du personnage"
+          },
+          "alignement": {
+            "type": "String",
+            "default": null,
+            "description": "Alignement du personnage"
+          },
+          "history": {
+            "type": "String",
+            "default": null,
+            "description": "Historique du personnage"
+          },
+          "level": {
+            "type": "Number",
+            "default": null,
+            "min": 1,
+            "max": 20,
+            "description": "Niveau du personnage"
+          },
+          "experience": {
+            "type": "Number",
+            "default": null,
+            "min": 0,
+            "description": "Points d'expérience"
+          }
+        },
+        "stats": {
+          "FOR": {
+            "value": {
+              "type": "Number",
+              "default": 0,
+              "min": 0,
+              "max": 30,
+              "description": "Valeur de base de la Force"
+            },
+            "mastered": {
+              "type": "Boolean",
+              "default": false,
+              "description": "Maîtrise de la sauvegarde de Force"
+            }
+          },
+          "DEX": {
+            "value": {
+              "type": "Number",
+              "default": 0,
+              "min": 0,
+              "max": 30,
+              "description": "Valeur de base de la Dextérité"
+            },
+            "mastered": {
+              "type": "Boolean",
+              "default": false,
+              "description": "Maîtrise de la sauvegarde de Dextérité"
+            }
+          },
+          "CON": {
+            "value": {
+              "type": "Number",
+              "default": 0,
+              "min": 0,
+              "max": 30,
+              "description": "Valeur de base de la Constitution"
+            },
+            "mastered": {
+              "type": "Boolean",
+              "default": false,
+              "description": "Maîtrise de la sauvegarde de Constitution"
+            }
+          },
+          "INT": {
+            "value": {
+              "type": "Number",
+              "default": 0,
+              "min": 0,
+              "max": 30,
+              "description": "Valeur de base de l'Intelligence"
+            },
+            "mastered": {
+              "type": "Boolean",
+              "default": false,
+              "description": "Maîtrise de la sauvegarde d'Intelligence"
+            }
+          },
+          "WIS": {
+            "value": {
+              "type": "Number",
+              "default": 0,
+              "min": 0,
+              "max": 30,
+              "description": "Valeur de base de la Sagesse"
+            },
+            "mastered": {
+              "type": "Boolean",
+              "default": false,
+              "description": "Maîtrise de la sauvegarde de Sagesse"
+            }
+          },
+          "CHA": {
+            "value": {
+              "type": "Number",
+              "default": 0,
+              "min": 0,
+              "max": 30,
+              "description": "Valeur de base du Charisme"
+            },
+            "mastered": {
+              "type": "Boolean",
+              "default": false,
+              "description": "Maîtrise de la sauvegarde de Charisme"
+            }
+          }
+        },
+        "skills": {
+          "acrobatics": {
+            "value": {
+              "type": "Number",
+              "default": 0,
+              "description": "Valeur de base de la compétence Acrobatie"
+            },
+            "proficiencyLevel": {
+              "type": "String",
+              "enum": ["default", "master", "expert", "half"],
+              "default": "default",
+              "description": "Niveau de maîtrise de la compétence"
+            }
+          },
+          "arcana": {
+            "value": {
+              "type": "Number",
+              "default": 0
+            },
+            "proficiencyLevel": {
+              "type": "String",
+              "enum": ["default", "master", "expert", "half"],
+              "default": "default"
+            }
+          },
+          "athletics": {
+            "value": {
+              "type": "Number",
+              "default": 0
+            },
+            "proficiencyLevel": {
+              "type": "String",
+              "enum": ["default", "master", "expert", "half"],
+              "default": "default"
+            }
+          },
+          "stealth": {
+            "value": {
+              "type": "Number",
+              "default": 0
+            },
+            "proficiencyLevel": {
+              "type": "String",
+              "enum": ["default", "master", "expert", "half"],
+              "default": "default"
+            }
+          },
+          "animalHandling": {
+            "value": {
+              "type": "Number",
+              "default": 0
+            },
+            "proficiencyLevel": {
+              "type": "String",
+              "enum": ["default", "master", "expert", "half"],
+              "default": "default"
+            }
+          },
+          "sleightOfHand": {
+            "value": {
+              "type": "Number",
+              "default": 0
+            },
+            "proficiencyLevel": {
+              "type": "String",
+              "enum": ["default", "master", "expert", "half"],
+              "default": "default"
+            }
+          },
+          "history": {
+            "value": {
+              "type": "Number",
+              "default": 0
+            },
+            "proficiencyLevel": {
+              "type": "String",
+              "enum": ["default", "master", "expert", "half"],
+              "default": "default"
+            }
+          },
+          "intimidation": {
+            "value": {
+              "type": "Number",
+              "default": 0
+            },
+            "proficiencyLevel": {
+              "type": "String",
+              "enum": ["default", "master", "expert", "half"],
+              "default": "default"
+            }
+          },
+          "investigation": {
+            "value": {
+              "type": "Number",
+              "default": 0
+            },
+            "proficiencyLevel": {
+              "type": "String",
+              "enum": ["default", "master", "expert", "half"],
+              "default": "default"
+            }
+          },
+          "medicine": {
+            "value": {
+              "type": "Number",
+              "default": 0
+            },
+            "proficiencyLevel": {
+              "type": "String",
+              "enum": ["default", "master", "expert", "half"],
+              "default": "default"
+            }
+          },
+          "nature": {
+            "value": {
+              "type": "Number",
+              "default": 0
+            },
+            "proficiencyLevel": {
+              "type": "String",
+              "enum": ["default", "master", "expert", "half"],
+              "default": "default"
+            }
+          },
+          "perception": {
+            "value": {
+              "type": "Number",
+              "default": 0
+            },
+            "proficiencyLevel": {
+              "type": "String",
+              "enum": ["default", "master", "expert", "half"],
+              "default": "default"
+            }
+          },
+          "insight": {
+            "value": {
+              "type": "Number",
+              "default": 0
+            },
+            "proficiencyLevel": {
+              "type": "String",
+              "enum": ["default", "master", "expert", "half"],
+              "default": "default"
+            }
+          },
+          "persuasion": {
+            "value": {
+              "type": "Number",
+              "default": 0
+            },
+            "proficiencyLevel": {
+              "type": "String",
+              "enum": ["default", "master", "expert", "half"],
+              "default": "default"
+            }
+          },
+          "religion": {
+            "value": {
+              "type": "Number",
+              "default": 0
+            },
+            "proficiencyLevel": {
+              "type": "String",
+              "enum": ["default", "master", "expert", "half"],
+              "default": "default"
+            }
+          },
+          "performance": {
+            "value": {
+              "type": "Number",
+              "default": 0
+            },
+            "proficiencyLevel": {
+              "type": "String",
+              "enum": ["default", "master", "expert", "half"],
+              "default": "default"
+            }
+          },
+          "deception": {
+            "value": {
+              "type": "Number",
+              "default": 0
+            },
+            "proficiencyLevel": {
+              "type": "String",
+              "enum": ["default", "master", "expert", "half"],
+              "default": "default"
+            }
+          },
+          "survival": {
+            "value": {
+              "type": "Number",
+              "default": 0
+            },
+            "proficiencyLevel": {
+              "type": "String",
+              "enum": ["default", "master", "expert", "half"],
+              "default": "default"
+            }
+          }
+        },
+        "attributes": {
+          "hp": {
+            "current": {
+              "type": "Number",
+              "default": 0,
+              "min": 0,
+              "description": "Points de vie actuels"
+            },
+            "max": {
+              "type": "Number",
+              "default": 0,
+              "min": 0,
+              "description": "Points de vie maximum"
+            },
+            "temp": {
+              "type": "Number",
+              "default": 0,
+              "min": 0,
+              "description": "Points de vie temporaires"
+            }
+          },
+          "ac": {
+            "total": {
+              "type": "Number",
+              "default": 0,
+              "min": 0,
+              "description": "Classe d'armure totale"
+            },
+            "flat": {
+              "type": "Number",
+              "default": 0,
+              "min": 0,
+              "description": "Classe d'armure de base"
+            },
+            "armorBonus": {
+              "type": "Number",
+              "default": 0,
+              "min": 0,
+              "description": "Bonus d'armure"
+            }
+          }
+        },
+        "playerNotes": {
+          "note": {
+            "type": "String",
+            "default": "",
+            "description": "Notes du joueur"
+          },
+          "knownCharacters": {
+            "type": "Array",
+            "items": {
+              "id": {
+                "type": "Number",
+                "description": "Identifiant unique de la note"
+              },
+              "name": {
+                "type": "String",
+                "description": "Nom du personnage connu"
+              },
+              "age": {
+                "type": "Number",
+                "description": "Âge du personnage"
+              },
+              "player": {
+                "type": "Boolean",
+                "description": "Est-ce un personnage joueur"
+              },
+              "location": {
+                "type": "String",
+                "description": "Localisation du personnage"
+              },
+              "relationship": {
+                "type": "String",
+                "description": "Relation avec le personnage"
+              },
+              "description": {
+                "type": "String",
+                "description": "Description du personnage"
+              }
+            },
+            "default": [],
+            "description": "Liste des personnages connus"
+          },
+          "importantItems": {
+            "type": "Array",
+            "items": {
+              "id": {
+                "type": "Number",
+                "description": "Identifiant unique de l'item"
+              },
+              "title": {
+                "type": "String",
+                "description": "Titre de l'item important"
+              },
+              "quantity": {
+                "type": "Number",
+                "description": "Quantité de l'item"
+              },
+              "location": {
+                "type": "String",
+                "description": "Localisation de l'item"
+              },
+              "playerOwner": {
+                "type": "String",
+                "description": "Propriétaire joueur de l'item"
+              },
+              "description": {
+                "type": "String",
+                "description": "Description de l'item"
+              }
+            },
+            "default": [],
+            "description": "Liste des items importants"
+          }
+        },
+        "equipmentSnapshotIds": {
+          "type": "Array",
+          "items": {
+            "type": "ObjectId",
+            "ref": "EquipmentSnapshot"
+          },
+          "default": [],
+          "description": "Références vers les snapshots d'équipements du personnage"
+        },
+        "spellSnapshotIds": {
+          "type": "Array",
+          "items": {
+            "type": "ObjectId",
+            "ref": "SpellSnapshot"
+          },
+          "default": [],
+          "description": "Références vers les snapshots de sorts du personnage"
+        },
+        "additionalData": {
+          "inspiration": {
+            "type": "Number",
+            "default": 0,
+            "min": 0,
+            "description": "Points d'inspiration (peut être calculé mais utile de stocker pour historique)"
+          },
+          "speed": {
+            "type": "Number",
+            "default": null,
+            "min": 0,
+            "description": "Vitesse de déplacement en mètres (null = calculée par défaut)"
+          },
+          "hitDice": {
+            "type": "String",
+            "default": null,
+            "description": "Type de dés de vie (ex: '1d8', '1d10')"
+          },
+          "hitDiceUsed": {
+            "type": "Number",
+            "default": 0,
+            "min": 0,
+            "description": "Nombre de dés de vie utilisés lors d'un repos court"
+          },
+          "languages": {
+            "type": "Array",
+            "items": {
+              "type": "String"
+            },
+            "default": [],
+            "description": "Langues connues par le personnage"
+          },
+          "proficiencies": {
+            "weapons": {
+              "type": "Array",
+              "items": {
+                "type": "String"
+              },
+              "default": [],
+              "description": "Armes maîtrisées"
+            },
+            "armor": {
+              "type": "Array",
+              "items": {
+                "type": "String"
+              },
+              "default": [],
+              "description": "Armures maîtrisées"
+            },
+            "tools": {
+              "type": "Array",
+              "items": {
+                "type": "String"
+              },
+              "default": [],
+              "description": "Outils maîtrisés"
+            }
+          },
+          "currency": {
+            "copper": {
+              "type": "Number",
+              "default": 0,
+              "min": 0,
+              "description": "Pièces de cuivre"
+            },
+            "silver": {
+              "type": "Number",
+              "default": 0,
+              "min": 0,
+              "description": "Pièces d'argent"
+            },
+            "gold": {
+              "type": "Number",
+              "default": 0,
+              "min": 0,
+              "description": "Pièces d'or"
+            },
+            "platinum": {
+              "type": "Number",
+              "default": 0,
+              "min": 0,
+              "description": "Pièces de platine"
+            }
+          },
+          "conditions": {
+            "type": "Array",
+            "items": {
+              "type": "String",
+              "enum": [
+                "Blinded",
+                "Charmed",
+                "Deafened",
+                "Frightened",
+                "Grappled",
+                "Incapacitated",
+                "Invisible",
+                "Paralyzed",
+                "Petrified",
+                "Poisoned",
+                "Prone",
+                "Restrained",
+                "Stunned",
+                "Unconscious",
+                "Exhaustion"
+              ]
+            },
+            "default": [],
+            "description": "Conditions affectant le personnage"
+          },
+          "deathSaves": {
+            "successes": {
+              "type": "Number",
+              "default": 0,
+              "min": 0,
+              "max": 3,
+              "description": "Jets de sauvegarde contre la mort réussis"
+            },
+            "failures": {
+              "type": "Number",
+              "default": 0,
+              "min": 0,
+              "max": 3,
+              "description": "Jets de sauvegarde contre la mort échoués"
+            }
+          }
+        },
+        "schemaVersion": {
+          "type": "String",
+          "default": "1.0.0",
+          "description": "Version du schéma pour tracking des migrations"
+        },
+        "createdAt": {
+          "type": "Date",
+          "default": "Date.now",
+          "description": "Date de création du personnage"
+        },
+        "updatedAt": {
+          "type": "Date",
+          "default": "Date.now",
+          "description": "Date de dernière modification"
+        }
+      },
+      "indexes": [
+        {
+          "fields": { "userId": 1 },
+          "description": "Index pour les requêtes par utilisateur"
+        },
+        {
+          "fields": { "createdAt": -1 },
+          "description": "Index pour trier par date de création"
+        }
+      ]
+    },
+
+    "equipmentSnapshots": {
+      "description": "Collection des snapshots d'équipements liés aux personnages",
+      "schema": {
+        "_id": {
+          "type": "ObjectId",
+          "description": "Identifiant unique MongoDB"
+        },
+        "characterId": {
+          "type": "ObjectId",
+          "required": true,
+          "ref": "Character",
+          "description": "Référence vers le personnage propriétaire"
+        },
+        "equipmentData": {
+          "id": {
+            "type": "Number",
+            "required": true,
+            "description": "Identifiant unique de l'équipement (pour référence interne)"
+          },
+          "name": {
+            "type": "String",
+            "required": true,
+            "description": "Nom de l'équipement"
+          },
+          "action": {
+            "type": "String",
+            "enum": ["Action", "Action Bonus", "Réaction", "Autre"],
+            "required": true,
+            "description": "Type d'action de l'équipement"
+          },
+          "quantity": {
+            "type": "Number",
+            "required": true,
+            "min": 0,
+            "description": "Quantité de l'équipement"
+          },
+          "weight": {
+            "type": "String",
+            "required": true,
+            "description": "Poids de l'équipement"
+          }
+        },
+        "snapshotDate": {
+          "type": "Date",
+          "default": "Date.now",
+          "description": "Date de création du snapshot"
+        },
+        "isActive": {
+          "type": "Boolean",
+          "default": true,
+          "description": "Indique si l'équipement est actuellement dans l'inventaire du personnage"
+        }
+      },
+      "indexes": [
+        {
+          "fields": { "characterId": 1, "isActive": 1 },
+          "description": "Index pour récupérer les équipements actifs d'un personnage"
+        },
+        {
+          "fields": { "snapshotDate": -1 },
+          "description": "Index pour trier par date de snapshot"
+        }
+      ]
+    },
+
+    "spellSnapshots": {
+      "description": "Collection des snapshots de sorts liés aux personnages",
+      "schema": {
+        "_id": {
+          "type": "ObjectId",
+          "description": "Identifiant unique MongoDB"
+        },
+        "characterId": {
+          "type": "ObjectId",
+          "required": true,
+          "ref": "Character",
+          "description": "Référence vers le personnage propriétaire"
+        },
+        "spellData": {
+          "id": {
+            "type": "Number",
+            "required": true,
+            "description": "Identifiant unique du sort (pour référence interne)"
+          },
+          "name": {
+            "type": "String",
+            "required": true,
+            "description": "Nom du sort"
+          },
+          "description": {
+            "type": "String",
+            "required": true,
+            "description": "Description du sort"
+          },
+          "level": {
+            "type": "String",
+            "enum": [
+              "Cantrip",
+              "LevelOne",
+              "LevelTwo",
+              "LevelThree",
+              "LevelFour",
+              "LevelFive",
+              "LevelSix",
+              "LevelSeven",
+              "LevelEight",
+              "LevelNine"
+            ],
+            "required": true,
+            "description": "Niveau du sort"
+          },
+          "incantationTime": {
+            "type": "String",
+            "required": true,
+            "description": "Temps d'incantation"
+          },
+          "duration": {
+            "type": "String",
+            "required": true,
+            "description": "Durée du sort"
+          },
+          "concentration": {
+            "type": "Boolean",
+            "required": true,
+            "default": false,
+            "description": "Le sort nécessite-t-il de la concentration"
+          },
+          "ritual": {
+            "type": "Boolean",
+            "required": true,
+            "default": false,
+            "description": "Le sort peut-il être lancé comme rituel"
+          },
+          "components": {
+            "type": "Array",
+            "items": {
+              "type": "String",
+              "enum": ["Verbal", "Somatic", "Material"]
+            },
+            "required": true,
+            "default": [],
+            "description": "Composantes du sort"
+          }
+        },
+        "snapshotDate": {
+          "type": "Date",
+          "default": "Date.now",
+          "description": "Date de création du snapshot"
+        },
+        "isActive": {
+          "type": "Boolean",
+          "default": true,
+          "description": "Indique si le sort est actuellement connu du personnage"
+        }
+      },
+      "indexes": [
+        {
+          "fields": { "characterId": 1, "isActive": 1 },
+          "description": "Index pour récupérer les sorts actifs d'un personnage"
+        },
+        {
+          "fields": { "snapshotDate": -1 },
+          "description": "Index pour trier par date de snapshot"
+        }
+      ]
+    }
+  },
+
+  "notes": {
+    "valeurs_calculables": [
+      "Les modificateurs de stats (calculés depuis value avec Math.floor(value/2) - 5)",
+      "Les modificateurs de compétences (calculés depuis stat + proficiencyLevel)",
+      "Le bonus de maîtrise (calculé depuis le niveau du personnage)",
+      "L'initiative (calculée depuis DEX modifier)",
+      "La perception passive (calculée depuis WIS modifier + proficiency)",
+      "Le DD de sauvegarde de sort (calculé depuis 8 + bonus de maîtrise + modificateur de stat)",
+      "La vitesse (peut être calculée ou fixe selon les règles)"
+    ],
+    "relations": [
+      "Les équipements sont stockés dans equipmentSnapshots avec une référence characterId",
+      "Les sorts sont stockés dans spellSnapshots avec une référence characterId",
+      "Les personnages gardent des références (ObjectId) vers leurs snapshots actifs dans equipmentSnapshotIds et spellSnapshotIds",
+      "Les snapshots permettent de garder un historique et de restaurer des états précédents si nécessaire"
+    ],
+    "utilisation_mongoose": [
+      "Utiliser Schema.Types.ObjectId pour les références",
+      "Utiliser timestamps: true dans les options du schéma pour createdAt/updatedAt automatiques",
+      "Utiliser populate() pour charger les snapshots liés",
+      "Créer des méthodes virtuelles pour calculer les valeurs dérivées si nécessaire"
+    ],
+    "strategie_migration": {
+      "approche_recommandee": "Schéma complet avec champs optionnels",
+      "explication": [
+        "Ce schéma inclut TOUS les champs nécessaires dès le départ, y compris des champs optionnels pour des fonctionnalités futures (additionalData).",
+        "Avantages:",
+        "  - Pas besoin de migration pour ajouter des fonctionnalités D&D standard",
+        "  - Les champs optionnels avec defaults ne cassent pas les données existantes",
+        "  - Le champ schemaVersion permet de tracker les versions et gérer les migrations si nécessaire",
+        "",
+        "MongoDB/Mongoose est flexible:",
+        "  - Les champs non définis dans le schéma Mongoose ne causent pas d'erreur",
+        "  - Vous pouvez ajouter des champs à la volée (mais pas recommandé en production)",
+        "  - Les migrations sont possibles avec des scripts de mise à jour",
+        "",
+        "Recommandations:",
+        "  1. Utiliser ce schéma complet dès le début pour éviter les migrations",
+        "  2. Tous les champs optionnels ont des valeurs par défaut (null, [], 0, etc.)",
+        "  3. Si vous devez ajouter un nouveau champ:",
+        "     - Ajoutez-le avec une valeur par défaut",
+        "     - Créez un script de migration pour mettre à jour les documents existants",
+        "     - Incrémentez schemaVersion",
+        "  4. Pour les nouvelles fonctionnalités majeures, créez une nouvelle collection plutôt que de modifier celle-ci",
+        "",
+        "Exemple de script de migration (si nécessaire):",
+        "  db.characters.updateMany(",
+        "    { schemaVersion: { $lt: '1.1.0' } },",
+        "    { $set: { 'additionalData.inspiration': 0, schemaVersion: '1.1.0' } }",
+        "  )"
+      ]
+    },
+    "champs_futurs_inclus": [
+      "additionalData.inspiration - Pour tracker l'inspiration (actuellement calculé à 0)",
+      "additionalData.speed - Pour vitesse personnalisée (actuellement calculée)",
+      "additionalData.hitDice - Dés de vie du personnage",
+      "additionalData.languages - Langues connues",
+      "additionalData.proficiencies - Maîtrises d'armes/armures/outils",
+      "additionalData.currency - Monnaie (cuivre, argent, or, platine)",
+      "additionalData.conditions - Conditions affectant le personnage",
+      "additionalData.deathSaves - Jets de sauvegarde contre la mort",
+      "schemaVersion - Version du schéma pour tracking"
+    ]
+  }
+}
