@@ -11,38 +11,3 @@ body {
     background-color 0.3s ease,
     color 0.3s ease;
 }
-
-.App {
-  height: 100vh;
-  width: 100vw;
-}
-
-.app-wrapper {
-  display: flex;
-  flex-direction: column;
-  margin-left: 8rem; // Compense la sidebar fixe
-  width: calc(100% - 8rem);
-  height: 100vh;
-
-  .App-content {
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-
-    .tab-component {
-      margin: 1.5rem;
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
-  }
-
-  .App-footer {
-    display: flex;
-    justify-content: left;
-    align-items: end;
-    color: var(--color-text);
-    height: 10vh;
-    background-color: transparent;
-  }
-}

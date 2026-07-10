@@ -1,46 +1,26 @@
-import useCharacter from '@/hooks/useCharacter';
-import StatsPageNew from '@/pages/statsPage/StatsPageNew';
-import React, { useState } from 'react';
+import ProtectedRoute from '@/components/protectedRoute/ProtectedRoute';
+import CharacterSheetPage from '@/pages/characterSheetPage/CharacterSheetPage';
+import LoginPage from '@/pages/loginPage/LoginPage';
+import RegisterPage from '@/pages/registerPage/RegisterPage';
+import WelcomePage from '@/pages/welcomePage/WelcomePage';
+import { Route, Routes } from 'react-router-dom';
 import './App.scss';
-import TabSelectorNew from './components/tabSelector/TabSelector';
-import InventoryPage from './pages/inventoryPage/InventoryPage';
-import PlayerNotePage from './pages/playerNotePage/PlayerNotePage';
-import ProfilPage from './pages/profilPage/ProfilPage';
-import SpellPage from './pages/spellPage/SpellPage';
 
 function App() {
-  const character = useCharacter();
-
-  const [selectedTab, setSelectedTab] = useState('stats');
-
   return (
-    <div className="App">
-      <TabSelectorNew
-        selectedTab={selectedTab}
-        setSelectedTab={setSelectedTab}
+    <Routes>
+      <Route path="/" element={<WelcomePage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route
+        path="/sheet"
+        element={
+          <ProtectedRoute>
+            <CharacterSheetPage />
+          </ProtectedRoute>
+        }
       />
-      <div className="app-wrapper">
-        <div className="App-content">
-          <div className="tab-component">
-            {
-              {
-                profil: <ProfilPage character={character} />,
-                stats: <StatsPageNew character={character} />,
-                inventory: (
-                  <InventoryPage title="Inventory" character={character} />
-                ),
-                spellbook: (
-                  <SpellPage title="Spellbook" character={character} />
-                ),
-                playerNote: (
-                  <PlayerNotePage title="Player Note" character={character} />
-                ),
-              }[selectedTab]
-            }
-          </div>
-        </div>
-      </div>
-    </div>
+    </Routes>
   );
 }
 

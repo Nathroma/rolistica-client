@@ -1,4 +1,4 @@
-@import '../../assets/style/table-mixins';
+@use '../../assets/style/table-mixins' as *;
 
 .floating-add-button {
   @include floating-add-button;
