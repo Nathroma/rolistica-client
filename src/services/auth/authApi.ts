@@ -1,5 +1,10 @@
 import { parsedEnv } from '@/config/env';
-import type { AuthTokens, LoginPayload, RegisterPayload } from '@/types/authType';
+import { authRoutes } from '@/services/auth/authRoutes';
+import type {
+  AuthTokens,
+  LoginPayload,
+  RegisterPayload,
+} from '@/types/authType';
 import { z } from 'zod';
 
 const authTokensSchema = z.object({
@@ -17,11 +22,14 @@ async function parseAuthResponse(response: Response): Promise<AuthTokens> {
 }
 
 export async function registerUser(payload: RegisterPayload) {
-  const response = await fetch(`${parsedEnv.VITE_API_URL}/register`, {
-    method: 'POST',
-    headers: jsonHeaders,
-    body: JSON.stringify(payload),
-  });
+  const response = await fetch(
+    `${parsedEnv.VITE_API_URL}${authRoutes.register}`,
+    {
+      method: 'POST',
+      headers: jsonHeaders,
+      body: JSON.stringify(payload),
+    }
+  );
 
   if (!response.ok) {
     throw new Error("Erreur lors de l'inscription, vérifiez vos informations");
@@ -31,7 +39,7 @@ export async function registerUser(payload: RegisterPayload) {
 }
 
 export async function loginUser(payload: LoginPayload) {
-  const response = await fetch(`${parsedEnv.VITE_API_URL}/login`, {
+  const response = await fetch(`${parsedEnv.VITE_API_URL}${authRoutes.login}`, {
     method: 'POST',
     headers: jsonHeaders,
     body: JSON.stringify(payload),

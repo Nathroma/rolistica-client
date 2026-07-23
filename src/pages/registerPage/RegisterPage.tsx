@@ -1,8 +1,8 @@
+import { useAuth } from '@/context/authUtils';
+import { registerUser } from '@/services/auth/authApi';
 import cx from 'classnames';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '@/context/AuthContext';
-import { registerUser } from '@/services/authApi';
 import './registerPage.scss';
 
 type FormData = {

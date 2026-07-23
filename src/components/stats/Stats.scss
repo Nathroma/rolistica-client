@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@400;700&display=swap');
 
-.stats-page-new {
+.stats {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -54,7 +54,7 @@
 
 // Dark mode support (if needed in the future)
 @media (prefers-color-scheme: dark) {
-  .stats-page-new {
+  .stats {
     background-color: var(--color-background);
     color: var(--color-text);
 

@@ -1,10 +1,10 @@
+import Inventory from '@/components/inventory/Inventory';
+import PlayerNote from '@/components/playerNote/PlayerNote';
+import Profil from '@/components/profil/Profil';
+import Spellbook from '@/components/spellbook/Spellbook';
+import Stats from '@/components/stats/Stats';
 import TabSelectorNew from '@/components/tabSelector/TabSelector';
 import useCharacter from '@/hooks/useCharacter';
-import InventoryPage from '@/pages/inventoryPage/InventoryPage';
-import PlayerNotePage from '@/pages/playerNotePage/PlayerNotePage';
-import ProfilPage from '@/pages/profilPage/ProfilPage';
-import SpellPage from '@/pages/spellPage/SpellPage';
-import StatsPageNew from '@/pages/statsPage/StatsPageNew';
 import { useState } from 'react';
 import './CharacterSheetPage.scss';
 
@@ -23,16 +23,16 @@ function CharacterSheetPage() {
           <div className="tab-component">
             {
               {
-                profil: <ProfilPage character={character} />,
-                stats: <StatsPageNew character={character} />,
+                profil: <Profil character={character} />,
+                stats: <Stats character={character} />,
                 inventory: (
-                  <InventoryPage title="Inventory" character={character} />
+                  <Inventory title="Inventory" character={character} />
                 ),
                 spellbook: (
-                  <SpellPage title="Spellbook" character={character} />
+                  <Spellbook title="Spellbook" character={character} />
                 ),
                 playerNote: (
-                  <PlayerNotePage title="Player Note" character={character} />
+                  <PlayerNote title="Player Note" character={character} />
                 ),
               }[selectedTab]
             }

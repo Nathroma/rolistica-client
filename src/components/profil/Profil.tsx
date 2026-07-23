@@ -3,16 +3,17 @@ import cx from 'classnames';
 import React from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import "./ProfilPage.scss";
+import './Profil.scss';
 
-type ProfilPageProps = {
-    character: Character;
+type ProfilProps = {
+  character: Character;
 };
 
-const dataPhysicalImgPath = "/assets/icons/profilDatasLogos/physicalDatasLogos/";
-const dataProfilImgPath = "/assets/icons/profilDatasLogos/";
+const dataPhysicalImgPath =
+  '/assets/icons/profilDatasLogos/physicalDatasLogos/';
+const dataProfilImgPath = '/assets/icons/profilDatasLogos/';
 
-const ProfilPage = ({ character }: ProfilPageProps) => {
+const Profil = ({ character }: ProfilProps) => {
 
     return (
         <div className={cx('character-sheet')}>
@@ -155,4 +156,4 @@ const ProfilPage = ({ character }: ProfilPageProps) => {
     );
 };
 
-export default ProfilPage;
+export default Profil;

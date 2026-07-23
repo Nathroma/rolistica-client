@@ -6,14 +6,13 @@ import StatCard from '@/components/statCard/StatCard';
 import { Character } from '@/types/characterType';
 import { StatType } from '@/types/statType';
 import cx from 'classnames';
-import React from 'react';
-import './StatsPageNew.scss';
+import './Stats.scss';
 
-type StatsPageNewProps = {
+type StatsProps = {
   character: Character;
 };
 
-const StatsPageNew = ({ character }: StatsPageNewProps) => {
+const Stats = ({ character }: StatsProps) => {
   const getStatColor = (statType: StatType): string => {
     const colorMap: Record<StatType, string> = {
       [StatType.FOR]: 'var(--color-str)',
@@ -27,7 +26,7 @@ const StatsPageNew = ({ character }: StatsPageNewProps) => {
   };
 
   return (
-    <div className={cx('stats-page-new')}>
+    <div className={cx('stats')}>
       <header className={cx('stats-header')}>
         <h2 className={cx('stats-title')}>Statistiques</h2>
       </header>
@@ -57,4 +56,4 @@ const StatsPageNew = ({ character }: StatsPageNewProps) => {
   );
 };
 
-export default StatsPageNew;
+export default Stats;

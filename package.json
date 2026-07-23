@@ -6,10 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write .",
+    "lint:check": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "ts:check": "tsc --noEmit",
+    "prepush": "npm run prettier:check && npm run lint:check",
     "preview": "vite preview",
     "start": "npm run build && npm run preview"
   },

@@ -1,4 +1,4 @@
-.inventory-page {
+.spellbook {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -10,7 +10,7 @@
     color: var(--color-text);
   }
 
-  .inventory-content {
+  .spellbook-content {
     display: flex;
     flex-direction: row;
     width: 100%;
