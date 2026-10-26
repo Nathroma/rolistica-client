@@ -34,7 +34,7 @@ const LoginPage = () => {
       login(tokens);
       const redirectTo =
         (routerLocation.state as { from?: { pathname: string } } | null)?.from
-          ?.pathname ?? '/sheet';
+          ?.pathname ?? '/selection';
       navigate(redirectTo, { replace: true });
     } catch (submitError) {
       setError(
