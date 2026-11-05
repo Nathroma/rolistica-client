@@ -6,11 +6,13 @@ import RegisterPage from '@/pages/registerPage/RegisterPage';
 import WelcomePage from '@/pages/welcomePage/WelcomePage';
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
+import TestAxios from '@/pages/testAxiosPage/TestAxios';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<WelcomePage />} />
+      <Route path="/test" element={<TestAxios />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route element={<ProtectedRoute />}>
