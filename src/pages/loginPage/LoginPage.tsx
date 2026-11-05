@@ -1,18 +1,11 @@
-import { useAuth } from '@/context/authUtils';
-import { loginUser } from '@/services/auth/authApi';
 import cx from 'classnames';
 import React, { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './loginPage.scss';
-
-type FormData = {
-  email: string;
-  password: string;
-};
+import useAuth from '@/hooks/useAuth';
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const routerLocation = useLocation();
   const { login } = useAuth();
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,28 +16,23 @@ const LoginPage = () => {
     setIsSubmitting(true);
 
     const formData = new FormData(e.currentTarget);
-    const formDataObject = Object.fromEntries(formData) as FormData;
+    const email = formData.get('email');
+    const password = formData.get('password');
 
-    try {
-      const tokens = await loginUser({
-        email: formDataObject.email,
-        password: formDataObject.password,
-      });
-
-      login(tokens);
-      const redirectTo =
-        (routerLocation.state as { from?: { pathname: string } } | null)?.from
-          ?.pathname ?? '/selection';
-      navigate(redirectTo, { replace: true });
-    } catch (submitError) {
-      setError(
-        submitError instanceof Error
-          ? submitError.message
-          : 'Erreur lors de la connexion'
-      );
-    } finally {
+    if (email === null || password === null) {
+      setError('Veuillez renseigner un email et un mot de passe');
       setIsSubmitting(false);
+      return;
     }
+
+    const result = await login(email as string, password as string);
+    if (result === 'failed') {
+      setError('Email ou mot de passe incorrect');
+      setIsSubmitting(false);
+      return;
+    }
+    setIsSubmitting(false);
+    navigate('/selection', { replace: true });
   };
 
   return (
