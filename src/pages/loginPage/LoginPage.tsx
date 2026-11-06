@@ -1,14 +1,22 @@
+import useAuth from '@/hooks/useAuth';
 import cx from 'classnames';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './loginPage.scss';
-import useAuth from '@/hooks/useAuth';
+import { authService } from '@/services/auth/authService';
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    const isAuthenticated = authService.isAuthenticated();
+    if (isAuthenticated) {
+      navigate('/selection', { replace: true });
+    }
+  }, [navigate]);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,11 +34,10 @@ const LoginPage = () => {
     }
 
     try {
-      const result = await login(email as string, password as string);
-      if (result === 'failed') {
-        setError('Email ou mot de passe incorrect');
-        return;
-      }
+      await login({
+        email: email as string,
+        password: password as string,
+      });
       navigate('/selection', { replace: true });
     } catch {
       setError('Email ou mot de passe incorrect');

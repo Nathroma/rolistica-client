@@ -1,35 +1,102 @@
-import type { AuthTokens } from '@/types/authType';
+import {
+  loginUser,
+  logoutUser,
+  refreshTokens,
+  registerUser,
+} from '@/services/auth/authApi';
+import type {
+  AuthTokens,
+  LoginPayload,
+  RegisterPayload,
+} from '@/types/authType';
+import { getAccessToken, setAccessToken } from '@/utils/tokenMemory';
 
-const ACCESS_TOKEN_KEY = 'rolistica.accessToken';
 const REFRESH_TOKEN_KEY = 'rolistica.refreshToken';
+const LEGACY_ACCESS_TOKEN_KEY = 'rolistica.accessToken';
+
+function getRefreshToken() {
+  return localStorage.getItem(REFRESH_TOKEN_KEY);
+}
+
+function setRefreshToken(token: string | null) {
+  if (token === null) {
+    localStorage.removeItem(REFRESH_TOKEN_KEY);
+    return;
+  }
+  localStorage.setItem(REFRESH_TOKEN_KEY, token);
+}
 
 export const authService = {
-  getTokens(): AuthTokens | null {
-    const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
-    const refreshToken = localStorage.getItem(REFRESH_TOKEN_KEY);
-
-    if (!accessToken || !refreshToken) {
-      return null;
-    }
-
-    return { accessToken, refreshToken };
-  },
-
-  setTokens({ accessToken, refreshToken }: AuthTokens) {
-    localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
-    localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
-  },
-
-  clearTokens() {
-    localStorage.removeItem(ACCESS_TOKEN_KEY);
-    localStorage.removeItem(REFRESH_TOKEN_KEY);
-  },
+  getAccessToken,
 
   isAuthenticated() {
-    return authService.getTokens() !== null;
+    return getAccessToken() !== null;
   },
 
-  getAccessToken() {
-    return localStorage.getItem(ACCESS_TOKEN_KEY);
+  setSession({ accessToken, refreshToken }: AuthTokens) {
+    setAccessToken(accessToken);
+    setRefreshToken(refreshToken);
+    localStorage.removeItem(LEGACY_ACCESS_TOKEN_KEY);
+  },
+
+  clearSession() {
+    setAccessToken(null);
+    setRefreshToken(null);
+    localStorage.removeItem(LEGACY_ACCESS_TOKEN_KEY);
+  },
+
+  async login(payload: LoginPayload) {
+    const tokens = await loginUser(payload);
+    authService.setSession(tokens);
+    return tokens;
+  },
+
+  async register(payload: RegisterPayload) {
+    const tokens = await registerUser(payload);
+    authService.setSession(tokens);
+    return tokens;
+  },
+
+  async refreshSession() {
+    const refreshToken = getRefreshToken();
+    if (!refreshToken) {
+      throw new Error('No refresh token');
+    }
+
+    const tokens = await refreshTokens(refreshToken);
+    authService.setSession(tokens);
+    return tokens.accessToken;
+  },
+
+  async bootstrap() {
+    if (getAccessToken()) {
+      return true;
+    }
+
+    const refreshToken = getRefreshToken();
+    if (!refreshToken) {
+      return false;
+    }
+
+    try {
+      await authService.refreshSession();
+      return true;
+    } catch {
+      authService.clearSession();
+      return false;
+    }
+  },
+
+  async logout() {
+    const accessToken = getAccessToken();
+    try {
+      if (accessToken) {
+        await logoutUser(accessToken);
+      }
+    } catch {
+      // Clear local session even if the API call fails.
+    } finally {
+      authService.clearSession();
+    }
   },
 };

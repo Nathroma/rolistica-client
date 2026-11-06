@@ -51,3 +51,37 @@ export async function loginUser(payload: LoginPayload) {
 
   return parseAuthResponse(response);
 }
+
+export async function refreshTokens(refreshToken: string) {
+  const response = await fetch(
+    `${parsedEnv.VITE_API_URL}${authRoutes.refresh}`,
+    {
+      method: 'POST',
+      headers: jsonHeaders,
+      body: JSON.stringify({ refreshToken }),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error('Session expirée');
+  }
+
+  return parseAuthResponse(response);
+}
+
+export async function logoutUser(accessToken: string) {
+  const response = await fetch(
+    `${parsedEnv.VITE_API_URL}${authRoutes.logout}`,
+    {
+      method: 'POST',
+      headers: {
+        ...jsonHeaders,
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+
+  if (!response.ok && response.status !== 204) {
+    throw new Error('Erreur lors de la déconnexion');
+  }
+}

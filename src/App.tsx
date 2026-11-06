@@ -7,14 +7,17 @@ import WelcomePage from '@/pages/welcomePage/WelcomePage';
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import TestAxios from '@/pages/testAxiosPage/TestAxios';
+import RedirectAuthUser from '@/components/redirectAuthUser/RedirectAuthUser';
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<WelcomePage />} />
-      <Route path="/test" element={<TestAxios />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
+      <Route element={<RedirectAuthUser />}>
+        <Route path="/" element={<WelcomePage />} />
+        <Route path="/test" element={<TestAxios />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Route>
       <Route element={<ProtectedRoute />}>
         <Route path="/selection" element={<CharacterSelectionPage />} />
         <Route path="/sheet" element={<CharacterSheetPage />} />

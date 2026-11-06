@@ -13,7 +13,7 @@ type FormData = {
 
 const RegisterPage = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { register } = useAuth();
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -37,8 +37,11 @@ const RegisterPage = () => {
     setIsSubmitting(true);
 
     try {
-      login(formDataObject.email, formDataObject.password);
-      navigate('/sheet', { replace: true });
+      await register({
+        email: formDataObject.email,
+        password: formDataObject.password,
+      });
+      navigate('/selection', { replace: true });
     } catch (submitError) {
       setError(
         submitError instanceof Error
