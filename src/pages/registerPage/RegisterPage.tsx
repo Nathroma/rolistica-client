@@ -1,5 +1,4 @@
-import { useAuth } from '@/context/authUtils';
-import { registerUser } from '@/services/auth/authApi';
+import useAuth from '@/hooks/useAuth';
 import cx from 'classnames';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -38,12 +37,7 @@ const RegisterPage = () => {
     setIsSubmitting(true);
 
     try {
-      const tokens = await registerUser({
-        email: formDataObject.email,
-        password: formDataObject.password,
-      });
-
-      login(tokens);
+      login(formDataObject.email, formDataObject.password);
       navigate('/sheet', { replace: true });
     } catch (submitError) {
       setError(

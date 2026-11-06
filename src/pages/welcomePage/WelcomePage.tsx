@@ -1,15 +1,8 @@
-import { useAuth } from '@/context/authUtils';
 import cx from 'classnames';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './welcomePage.scss';
 
 const WelcomePage = () => {
-  const { isAuthenticated } = useAuth();
-
-  if (isAuthenticated) {
-    return <Navigate to="/selection" replace />;
-  }
-
   return (
     <div className={cx('welcome-page')}>
       <h1>Bienvenue sur Rolistica !</h1>

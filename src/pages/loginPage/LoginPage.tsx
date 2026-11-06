@@ -25,14 +25,18 @@ const LoginPage = () => {
       return;
     }
 
-    const result = await login(email as string, password as string);
-    if (result === 'failed') {
+    try {
+      const result = await login(email as string, password as string);
+      if (result === 'failed') {
+        setError('Email ou mot de passe incorrect');
+        return;
+      }
+      navigate('/selection', { replace: true });
+    } catch {
       setError('Email ou mot de passe incorrect');
+    } finally {
       setIsSubmitting(false);
-      return;
     }
-    setIsSubmitting(false);
-    navigate('/selection', { replace: true });
   };
 
   return (
