@@ -1,13 +1,19 @@
 import CharacterTile from '@/components/characterTile/CharacterTile';
 import cx from 'classnames';
 import './CharacterSelectionPage.scss';
+import useCharacterNew, { type CharacterInfo } from '@/hooks/useCharacterNew';
+import { useEffect, useState } from 'react';
 
 const CharacterSelectionPage = () => {
-  const characters = [
-    { id: 1, name: 'John Doe', class: 'Paladin', race: 'Humain', level: 1 },
-    { id: 2, name: 'Jane Doe', class: 'Mage', race: 'Elfe', level: 2 },
-    { id: 3, name: 'Jim Doe', class: 'Rouge', race: 'Nain', level: 3 },
-  ];
+  const { getAll } = useCharacterNew();
+  const [characters, setCharacters] = useState<CharacterInfo[]>([]);
+
+  useEffect(() => {
+    getAll().then((characters) => {
+      console.log(characters);
+      setCharacters(characters);
+    });
+  }, [getAll]);
 
   return (
     <div className={cx('character-selection-page')}>
@@ -23,7 +29,7 @@ const CharacterSelectionPage = () => {
         </div>
         <div className={cx('character-list-content')}>
           {characters.map((character) => (
-            <CharacterTile key={character.id} character={character} />
+            <CharacterTile key={character.name} character={character} />
           ))}
         </div>
       </div>
